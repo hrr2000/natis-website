@@ -1,15 +1,20 @@
 import Image from "../../../common/Image";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Overlay from "../../../common/Overlay";
 
 interface IVideo {
   videoCover: string;
   videoUrl: string;
+  noOverlay?: boolean;
 }
 
-export default function Video({videoCover, videoUrl}: IVideo) {
+export default function Video({videoCover, videoUrl, noOverlay}: IVideo) {
 
   const [isStarted, setIsStarted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setIsStarted(false);
+  }, [videoCover])
 
   return (
     <>
@@ -17,7 +22,7 @@ export default function Video({videoCover, videoUrl}: IVideo) {
       {isStarted || (
         <div className={`relative w-full h-[315px] rounded-lg overflow-hidden`}>
           <Image src={videoCover} objectFit={`cover`} />
-          <Overlay />
+          {noOverlay || <Overlay />}
           <div
             className={`absolute w-full h-full flex justify-center items-center group cursor-pointer`}
             onClick={() => setIsStarted(true)}

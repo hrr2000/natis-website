@@ -1,12 +1,9 @@
 import {ReactNode} from "react";
 
-interface ISectionWrapper {
-  children: ReactNode;
-}
 
-export default function SectionWrapper({ children }: ISectionWrapper) {
+export default function SectionWrapper({ children, ...props }: any) {
   return (
-    <section className={`container mx-auto my-20 py-5`}>
+    <section className={`container mx-auto my-20 py-5`} {...props}>
       {children}
     </section>
   )

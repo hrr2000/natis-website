@@ -32,7 +32,7 @@ export default class DirectusClient {
 
         if (!Array.isArray(items)) return [];
 
-        const translations = await this.get(name + '_translations');
+        const translations = await this.get(name + '_translations' + `?filter[languages_code][_eq]=${locale}`);
 
         if (!Array.isArray(translations)) return [];
 

@@ -9,7 +9,7 @@ import MembersSection from "../components/sections/home/MembersSection";
 import NewsSection from "../components/sections/home/NewsSection";
 import TestimonialsSection from "../components/sections/home/TestimonialsSection";
 
-const Home: NextPage = ({content, committee_members, news, testimonials}: any) => {
+const Apply: NextPage = ({content, committee_members, news, testimonials}: any) => {
   return (
     <main className={`w-full`}>
       <Head>
@@ -23,34 +23,12 @@ const Home: NextPage = ({content, committee_members, news, testimonials}: any) =
         description={content.hero_description}
         links={content.hero_links}
       />
-      <AboutSection
-        title={content.about_section_title}
-        videoCover={asset(content.about_section_video_cover)}
-        videoUrl={content.about_section_video_Url}
-        goalsText={content.goals_mission_text}
-        aboutText={content.about_nati}
-      />
-      <MembersSection
-        title={content.members_section_title}
-        headerLink={{text: content.members_section_view_all_text, url: "/"}}
-        members={committee_members}
-      />
-      <TestimonialsSection
-        title={content.testimonials_section_title}
-        testimonials={testimonials}
-      />
-      <NewsSection
-        title={content.new_section_title}
-        headerLink={{text: content.new_section_view_all_text, url: "/"}}
-        news={news}
-      />
     </main>
   )
 }
 
 export async function getStaticProps({locale}: GetStaticPropsContext) {
   const page = new Page('home_page', locale || 'en-US');
-  console.log(await page.getItems('committee_members'))
   return {
     props: {
       content: await page.data(),
@@ -61,4 +39,4 @@ export async function getStaticProps({locale}: GetStaticPropsContext) {
   }
 }
 
-export default Home;
+export default Apply;

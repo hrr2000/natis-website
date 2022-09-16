@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+    scroll-behavior: smooth;
+    color: #666D83;
+}
 
 .container {
     @apply box-border px-5 xs:px-5 xl:px-20
@@ -27,4 +31,33 @@ h3 {
 
 ul {
     all: revert;
+}
+
+section.swiper-container {
+    background-color: cadetblue;
+    display: flex;
+    justify-content: center;
+}
+
+div.swiper-slide {
+    margin: 0;
+}
+
+.swiper {
+    overflow: visible !important;
+}
+
+.swiper-slide-active {
+    transform: scale(1.3) !important;
+    transition: all 1s;
+}
+.swiper-slide-active  figure {
+    border: solid 3px #C3BC05;
+    border-radius: 50%;
+}
+
+@media only screen and (max-width: 600px) {
+    .swiper-slide {
+        margin: 10px !important;
+    }
 }
