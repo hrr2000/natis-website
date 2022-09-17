@@ -1,5 +1,5 @@
 interface ISpecialCard {
-  reverse: boolean;
+  reverse?: boolean;
 }
 
 export default function SpecialCard({reverse}: ISpecialCard) {
