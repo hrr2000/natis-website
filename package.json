@@ -10,12 +10,15 @@
   },
   "dependencies": {
     "@tailwindcss/forms": "^0.5.3",
+    "formik": "^2.2.9",
     "moment": "^2.29.4",
     "next": "12.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
-    "swiper": "^8.3.2"
+    "shortid": "^2.2.16",
+    "swiper": "^8.3.2",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/node": "18.7.16",
