@@ -33,8 +33,11 @@ module.exports = {
       colors: {
         primary: "#272F54",
         secondary: "#C3BC05",
+        label: "#666D83",
+        border: "#EBEDED",
+        placeholder: "#D6D8DF",
       },
     },
   },
-  plugins: [require("tailwindcss-rtl")],
+  plugins: [require("tailwindcss-rtl"), require("@tailwindcss/forms")],
 };
