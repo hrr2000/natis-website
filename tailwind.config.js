@@ -30,12 +30,16 @@ module.exports = {
         "1/12": "8.333333%",
         "2/12": "16.66666667%",
       },
+      spacing: {
+        "dynamic-md": "min(65% , 50rem)",
+      },
       colors: {
         primary: "#272F54",
         secondary: "#C3BC05",
         label: "#666D83",
         border: "#EBEDED",
         placeholder: "#D6D8DF",
+        overlay: "rgba(0,0,0,0.5)",
       },
     },
   },

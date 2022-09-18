@@ -3,12 +3,22 @@ import InputField from "./InputField";
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import SelectField from "./SelectField";
 import { submissionForm } from "../../../../utils/validation/schemas";
-export default function SubmissionForm() {
+import { awaitTimeout } from "../../../../utils/functions";
+export default function SubmissionForm({
+  setModalState,
+}: {
+  setModalState: (x: number) => void;
+}) {
   return (
     <Formik
       initialValues={submissionForm.formInitData}
-      onSubmit={(values, { resetForm }) => {
+      onSubmit={async (values, { resetForm }) => {
         resetForm();
+        setModalState(1);
+        await awaitTimeout(2500);
+        setModalState(2);
+        await awaitTimeout(2000);
+        setModalState(0);
       }}
       validationSchema={submissionForm.submissionSchema}
     >
