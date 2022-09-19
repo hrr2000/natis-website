@@ -50,7 +50,6 @@ const Home: NextPage = ({content, committee_members, news, testimonials}: any) =
 
 export async function getStaticProps({locale}: GetStaticPropsContext) {
   const page = new Page('home_page', locale || 'en-US');
-  console.log(await page.getItems('committee_members'))
   return {
     props: {
       content: await page.data(),
