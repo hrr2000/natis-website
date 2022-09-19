@@ -22,7 +22,7 @@ export default function AvatarSwiper({ data, setReview }: any) {
   const swiperRef = useRef(null);
   const toSlide = (idx: number, item: any) => {
     // @ts-ignore
-    swiperRef.current.swiper.slideTo(idx);
+    swiperRef.current?.swiper.slideTo(idx);
     setReview(item);
   };
 
