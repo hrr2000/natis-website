@@ -9,7 +9,7 @@ const Modal = ({
 }) => {
   return (
     <>
-      {modalState && (
+      {!modalState || (
         <div className="bg-overlay fixed inset-0 grid place-items-center">
           <div className="w-dynamic-md bg-white rounded-md">
             {children(modalState)}
