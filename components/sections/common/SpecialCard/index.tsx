@@ -1,32 +1,38 @@
+import {useRouter} from 'next/router';
+import Image from '../../../common/Image';
+
 interface ISpecialCard {
+  image: string;
+  smallTitle: string;
+  bigTitle: string;
+  description: string;
   reverse?: boolean;
 }
 
-export default function SpecialCard({reverse}: ISpecialCard) {
+export default function SpecialCard({image, smallTitle, bigTitle, description, reverse}: ISpecialCard) {
+
+  const {locale} = useRouter();
+  const textDirection = locale === 'ar-SA' ? 'rtl' : 'ltr';
+  const containerDirection = reverse ? 'rtl' : 'ltr';
+
   return (
-    <div className="flex min-h-screen max-w-7xl items-center justify-center">
-      <div className="flex w-full justify-center bg-gray-50 py-6 sm:py-12">
-        <div className="h-[400px] basis-2/12 bg-red-300"></div>
-        <div className="-mt-24 h-[400px] basis-5/12 bg-red-700" style={{
+    <div className="flex max-w-7xl items-center justify-center mx-auto my-32">
+      <div className="flex w-full justify-center bg-gray-50 py-6 sm:py-12" dir={containerDirection}>
+        <div className="h-[600px] basis-2/12 bg-secondary"></div>
+        <div className="-mt-24 h-[600px] basis-4/12 bg-black relative z-1" style={{
           marginInlineStart: '-8.333333%'
-        }}></div>
-        <div className="flex basis-6/12 flex-col justify-center bg-red-400 px-8 py-6" style={{
-          marginInlineStart: '-16.666667%'
         }}>
-          <header className="mb-8 flex flex-col gap-3 font-medium capitalize">
-            <h4 className="text-2xl">statement of ownership</h4>
-            <h2 className="text-4xl">about nati esl</h2>
+          <Image src={image} objectFit={'cover'} />
+        </div>
+        <div className="flex basis-7/12 flex-col justify-center bg-white px-12 py-6 shadow-lg relative z-2" style={{
+          marginInlineStart: '-8.333333%'
+        }}>
+          <header className="mb-8 flex flex-col gap-3 font-medium capitalize" dir={textDirection}>
+            <h4 className="text-2xl">{smallTitle}</h4>
+            <h2 className="text-6xl text-secondary">{bigTitle}</h2>
           </header>
-          <main>
-            <p className="max-w-[70ch]">
-              North America Technical Institute ESL (NATI ESL) Institute Was
-              Founded In 2022 And Is Privately Owned By Dr. Abed Sami Almala,
-              A Veteran Educator Who Has Been Serving In Educational
-              Institutions Since 1995. He Started His Career As A High
-              Institute Teacher And Now Is A Higher Education Veteran. The
-              Intensive English Program At The NATI ESL Is Accredited By The
-              Commission On English Language Program Accreditation (CEA).
-            </p>
+          <main dir={textDirection} >
+            <p className="max-w-[70ch] text-xl font-bold text-primary leading-10 whitespace-pre-wrap">{description}</p>
           </main>
         </div>
       </div>

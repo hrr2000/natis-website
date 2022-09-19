@@ -20,20 +20,28 @@ const About: NextPage = ({ content }: any) => {
         description={content.hero_description}
         links={content.hero_links}
       />
-      <SpecialCard />
-      <SpecialCard reverse />
+      <SpecialCard
+        image={asset(content.about_image)}
+        smallTitle={content.about_small_title}
+        bigTitle={content.about_big_title}
+        description={content.about_description}
+      />
+      <SpecialCard
+        image={asset(content.mission_image)}
+        smallTitle={content.mission_small_title}
+        bigTitle={content.mission_big_title}
+        description={content.mission_description}
+        reverse />
     </main>
   );
 };
 
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
-  const page = new Page("home_page", locale || "en-US");
+  const page = new Page("about_page", locale || "en-US");
+  console.log(await page.data());
   return {
     props: {
       content: await page.data(),
-      committee_members: await page.getItems(`committee_members`),
-      news: await page.getItems(`news`),
-      testimonials: await page.getItems(`testimonials`),
     },
   };
 }

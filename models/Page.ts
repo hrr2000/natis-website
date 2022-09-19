@@ -10,6 +10,7 @@ export default class Page {
 
   functions: any = {
     'home_page': () => this.getHomePage(),
+    'about_page': () => this.getAboutPage(),
   }
 
   constructor(name: string, locale: string) {
@@ -27,6 +28,14 @@ export default class Page {
     return {
       ...(await client.getOne('home_page')),
       ...(await client.getOne('home_page_translations', this.locale)),
+    };
+  }
+
+  async getAboutPage() {
+    const client = this.directus;
+    return {
+      ...(await client.getOne('about_page')),
+      ...(await client.getOne('about_page_translations', this.locale)),
     };
   }
 
