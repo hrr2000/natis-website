@@ -56,9 +56,8 @@ const Home: NextPage = ({
   );
 };
 
-export async function getStaticProps({ locale }: GetStaticPropsContext) {
-  const page = new Page("home_page", locale || "en-US");
-  console.log(await page.getItems("committee_members"));
+export async function getStaticProps({locale}: GetStaticPropsContext) {
+  const page = new Page('home_page', locale || 'en-US');
   return {
     props: {
       content: await page.data(),
