@@ -6,13 +6,13 @@ import { labelsType } from "../../../../Types/common";
 import { useState } from "react";
 import Modal from "../../../common/Modal";
 import Image from "next/image";
-import sent from "../../../../assets/sent.gif";
-import loading from "../../../../assets/loading.gif";
+import sending from "../../../../assets/sending.webp";
+import sent from "../../../../assets/sent.webp";
 
 const getSubmissionResources = (modalState: number) => {
   let src, heading, textContent;
   if (modalState === 1) {
-    src = loading;
+    src = sending;
     heading = "Sending the request";
     textContent =
       "Currently, the application is being submitted to the NATI ESL Institute ...";
@@ -54,7 +54,13 @@ export default function ApplicationSection({ labels }: { labels: labelsType }) {
                 {heading}
               </h2>
               <figure className={` flex ${modalState === 2 && "order-1"}`}>
-                <Image src={src!} objectFit="cover" alt="koko"></Image>
+                <Image
+                  src={src!}
+                  width={300}
+                  height={300}
+                  objectFit="cover"
+                  alt="koko"
+                ></Image>
               </figure>
 
               <p className="max-w-[50ch]  order-3">{textContent}</p>
