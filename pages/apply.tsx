@@ -45,18 +45,10 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
   };
 
   const page = new Page("home_page", locale || "en-US");
-  const [content, committee_members, news, testimonials] = await Promise.all([
-    await page.data(),
-    await page.getItems(`committee_members`),
-    await page.getItems(`news`),
-    await page.getItems(`testimonials`),
-  ]);
+  const [content] = await Promise.all([await page.data()]);
   return {
     props: {
       content,
-      committee_members,
-      news,
-      testimonials,
       labels,
     },
   };
