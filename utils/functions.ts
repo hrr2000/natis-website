@@ -1,4 +1,4 @@
-import { ASSET_BASE_URL } from "./constants";
+import {ASSET_BASE_URL, DEBUG_MODE} from "./constants";
 
 export function asset(name: string) {
   return ASSET_BASE_URL + name;
@@ -28,3 +28,9 @@ export function relative_date(date_string: string) {
 
 export const awaitTimeout = (delay: number) =>
   new Promise((resolve) => setTimeout(resolve, delay));
+
+
+export const dd = (obj: any) => {
+  if(!DEBUG_MODE) return;
+  console.log(obj)
+}

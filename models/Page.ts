@@ -8,11 +8,6 @@ export default class Page {
   directus = new DirectusClient(process.env.DIRECTUS_HOSTNAME || DIRECTUS_HOSTNAME);
   dataObject: any = null;
 
-  functions: any = {
-    'home_page': () => this.getHomePage(),
-    'about_page': () => this.getAboutPage(),
-  }
-
   constructor(name: string, locale: string) {
     this.name = name;
     this.locale = locale;
@@ -20,22 +15,14 @@ export default class Page {
 
   async data() {
     if(this.dataObject) return this.dataObject;
-    return this.dataObject = this.functions?.[this.name]?.();
+    return this.dataObject = this.get(this.name) || {};
   }
 
-  async getHomePage() {
+  async get(name: string) {
     const client = this.directus;
     return {
-      ...(await client.getOne('home_page')),
-      ...(await client.getOne('home_page_translations', this.locale)),
-    };
-  }
-
-  async getAboutPage() {
-    const client = this.directus;
-    return {
-      ...(await client.getOne('about_page')),
-      ...(await client.getOne('about_page_translations', this.locale)),
+      ...(await client.getOne(name)),
+      ...(await client.getOne(name + '_translations', this.locale)),
     };
   }
 

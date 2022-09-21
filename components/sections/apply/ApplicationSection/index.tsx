@@ -5,9 +5,9 @@ import { LabelProvider } from "../../../../contexts/LabelProvider";
 import { labelsType } from "../../../../Types/common";
 import { useState } from "react";
 import Modal from "../../../common/Modal";
-import Image from "next/image";
-import sending from "../../../../assets/sending.webp";
-import sent from "../../../../assets/sent.webp";
+import sending from "../../../../assets/sending.gif";
+import sent from "../../../../assets/sent.gif";
+import Image from "../../../common/Image";
 
 const getSubmissionResources = (modalState: number) => {
   let src, heading, textContent;
@@ -26,12 +26,12 @@ const getSubmissionResources = (modalState: number) => {
   return { src, heading, textContent };
 };
 
-export default function ApplicationSection({ labels }: { labels: labelsType }) {
+export default function ApplicationSection({ title, labels }: { title: string, labels: labelsType }) {
   const [modalState, setModalState] = useState(0);
   return (
     <SectionWrapper>
-      <header>
-        <SectionHeading text={"Submission Form"} />
+      <header className={`mb-10`}>
+        <SectionHeading text={title} />
       </header>
       <LabelProvider labels={labels}>
         <SubmissionForm setModalState={setModalState} />
@@ -44,26 +44,21 @@ export default function ApplicationSection({ labels }: { labels: labelsType }) {
             <div
               className={`flex flex-col justify-center items-center text-center min-h-[400px] ${
                 modalState === 1 ? "gap-5" : "gap-4"
-              } p-5`}
+              } py-16`}
             >
-              <h2
-                className={`${
+              <h3
+                className={`text-secondary ${
                   modalState === 2 && "order-2 text-xl md:text-2xl"
                 }`}
               >
                 {heading}
-              </h2>
-              <figure className={` flex ${modalState === 2 && "order-1"}`}>
+              </h3>
                 <Image
+                  className={`relative flex w-[300px] h-[300px] ${modalState === 2 && "order-1"}`}
                   src={src!}
-                  width={300}
-                  height={300}
                   objectFit="cover"
-                  alt="koko"
-                ></Image>
-              </figure>
-
-              <p className="max-w-[50ch]  order-3">{textContent}</p>
+                />
+              <p className="max-w-[50ch] order-3">{textContent}</p>
             </div>
           );
         }}

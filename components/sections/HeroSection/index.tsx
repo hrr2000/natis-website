@@ -10,7 +10,7 @@ interface IHeroSection {
   backgroundImage: string;
   heading: string;
   description: string;
-  links: ILink[];
+  links?: ILink[];
 }
 
 export default function HeroSection(content: IHeroSection) {
