@@ -5,6 +5,7 @@ import { asset } from "../utils/functions";
 import Page from "../models/Page";
 import Head from "next/head";
 import SpecialCard from "../components/sections/common/SpecialCard";
+import {DEFAULT_LOCALE} from "../utils/constants";
 
 const About: NextPage = ({ content }: any) => {
   return (
@@ -37,7 +38,7 @@ const About: NextPage = ({ content }: any) => {
 };
 
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
-  const page = new Page("about_page", locale || "en-US");
+  const page = new Page("about_page", locale || DEFAULT_LOCALE);
   console.log(await page.data());
   return {
     props: {

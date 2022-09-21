@@ -8,6 +8,7 @@ import Head from "next/head";
 import MembersSection from "../components/sections/home/MembersSection";
 import NewsSection from "../components/sections/home/NewsSection";
 import TestimonialsSection from "../components/sections/home/TestimonialsSection";
+import {DEFAULT_LOCALE} from "../utils/constants";
 
 const Home: NextPage = ({
   content,
@@ -57,15 +58,21 @@ const Home: NextPage = ({
 };
 
 export async function getStaticProps({locale}: GetStaticPropsContext) {
-  const page = new Page('home_page', locale || 'en-US');
+  const page = new Page('home_page', locale || DEFAULT_LOCALE);
+  const [content, committee_members, news, testimonials] = await Promise.all([
+    page.data(),
+    page.getItems(`committee_members`),
+    page.getItems(`news`),
+    page.getItems(`testimonials`),
+  ]);
   return {
     props: {
-      content: await page.data(),
-      committee_members: await page.getItems(`committee_members`),
-      news: await page.getItems(`news`),
-      testimonials: await page.getItems(`testimonials`),
+      content,
+      committee_members,
+      news,
+      testimonials,
     },
-  };
+  }
 }
 
 export default Home;
