@@ -1,7 +1,7 @@
-import type {GetServerSideProps, GetStaticPropsContext, NextPage} from 'next'
+import type { GetServerSideProps, GetStaticPropsContext, NextPage } from "next";
 // import Navbar from "../components/common/Navbar";
 import HeroSection from "../components/sections/HeroSection";
-import {asset} from "../utils/functions";
+import { asset } from "../utils/functions";
 import Page from "../models/Page";
 import AboutSection from "../components/sections/home/AboutSection";
 import Head from "next/head";
@@ -10,7 +10,12 @@ import NewsSection from "../components/sections/home/NewsSection";
 import TestimonialsSection from "../components/sections/home/TestimonialsSection";
 import {DEFAULT_LOCALE} from "../utils/constants";
 
-const Home: NextPage = ({content, committee_members, news, testimonials}: any) => {
+const Home: NextPage = ({
+  content,
+  committee_members,
+  news,
+  testimonials,
+}: any) => {
   return (
     <main className={`w-full`}>
       <Head>
@@ -33,7 +38,10 @@ const Home: NextPage = ({content, committee_members, news, testimonials}: any) =
       />
       <MembersSection
         title={content.members_section_title}
-        headerLink={{text: content.members_section_view_all_text, url: "/"}}
+        headerLink={{
+          text: content.members_section_view_all_text,
+          url: "/admins-supervisors",
+        }}
         members={committee_members}
       />
       <TestimonialsSection
@@ -42,12 +50,12 @@ const Home: NextPage = ({content, committee_members, news, testimonials}: any) =
       />
       <NewsSection
         title={content.new_section_title}
-        headerLink={{text: content.new_section_view_all_text, url: "/"}}
+        headerLink={{ text: content.new_section_view_all_text, url: "/" }}
         news={news}
       />
     </main>
-  )
-}
+  );
+};
 
 export async function getStaticProps({locale}: GetStaticPropsContext) {
   const page = new Page('home_page', locale || DEFAULT_LOCALE);
