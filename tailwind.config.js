@@ -31,7 +31,8 @@ module.exports = {
         "2/12": "16.66666667%",
       },
       spacing: {
-        "dynamic-md": "min(65% , 50rem)",
+        "dynamic-md": "min(70% , 55rem)",
+        dynamic: "min(95% , 120rem)",
       },
       colors: {
         primary: "#272F54",

@@ -26,7 +26,13 @@ const getSubmissionResources = (modalState: number) => {
   return { src, heading, textContent };
 };
 
-export default function ApplicationSection({ title, labels }: { title: string, labels: labelsType }) {
+export default function ApplicationSection({
+  title,
+  labels,
+}: {
+  title: string;
+  labels: labelsType;
+}) {
   const [modalState, setModalState] = useState(0);
   return (
     <SectionWrapper>
@@ -53,11 +59,14 @@ export default function ApplicationSection({ title, labels }: { title: string, l
               >
                 {heading}
               </h3>
-                <Image
-                  className={`relative flex w-[300px] h-[300px] ${modalState === 2 && "order-1"}`}
-                  src={src!}
-                  objectFit="cover"
-                />
+              <Image
+                className={`relative flex w-[300px] h-[300px] ${
+                  modalState === 2 && "order-1"
+                }`}
+                src={src!}
+                objectFit="cover"
+                alt=""
+              />
               <p className="max-w-[50ch] order-3">{textContent}</p>
             </div>
           );
