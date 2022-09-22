@@ -41,6 +41,7 @@ module.exports = {
         border: "#EBEDED",
         placeholder: "#D6D8DF",
         overlay: "rgba(0,0,0,0.5)",
+        imageOverlay: "rgba(107, 114, 128, 0.5)",
       },
     },
   },

@@ -7,7 +7,7 @@ import { Navigation, Pagination } from "swiper";
 import { GRK } from "../../../../utils/functions";
 import { useState } from "react";
 import { useOutSideClick } from "../../../../hooks";
-
+import { AiFillEye } from "react-icons/Ai";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -35,20 +35,23 @@ export default function ImageSection({
       <SectionWrapper style={{ marginTop: 0 }}>
         <header>{title && <SectionHeading text={title || ""} />}</header>
         {/* create image component */}
-        <ul className=" flex flex-col md:grid md:grid-cols-3 lg:grid-cols-5 gap-3 list-none p-0 ">
+        <ul className=" flex flex-col md:grid md:grid-cols-3 lg:grid-cols-4 gap-5 list-none p-0 ">
           {urls?.map((url, index) => (
             <li
-              className="rounded-md overflow-hidden cursor-pointer "
+              className="rounded-md overflow-hidden cursor-pointer relative group"
               key={GRK(url)}
               onClick={() => handleClick(index)}
             >
               <Image
                 src={url}
                 alt=""
-                className="relative h-52 border-0 rounded-none hover:scale-125 transition-all"
+                className="relative h-52 border-0 rounded-none group-hover:scale-125 transition-all"
                 priority
                 objectFit="cover"
               />
+              <div className="absolute flex items-center scale-0 justify-center inset-0 ease-out group-hover:scale-100 transition-all bg-imageOverlay">
+                <AiFillEye className="text-5xl text-white" />
+              </div>
             </li>
           ))}
         </ul>
