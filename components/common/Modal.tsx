@@ -3,15 +3,17 @@ import React from "react";
 const Modal = ({
   children,
   modalState,
+  modalRef,
 }: {
   children: (x: number) => React.ReactNode;
   modalState: number;
+  modalRef?: any;
 }) => {
   return (
     <>
       {!!modalState && (
-        <div className="bg-overlay fixed inset-0 grid place-items-center">
-          <div className="w-dynamic-md bg-white rounded-md">
+        <div className="bg-overlay fixed inset-0 flex justify-center items-center">
+          <div ref={modalRef} className="w-dynamic-md bg-white rounded-md">
             {children(modalState)}
           </div>
         </div>

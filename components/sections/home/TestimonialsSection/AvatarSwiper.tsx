@@ -1,13 +1,5 @@
 import React, { useRef, useEffect } from "react";
-// import Swiper core and required modules
-import SwiperCore, {
-  Navigation,
-  HashNavigation,
-  Pagination,
-  Scrollbar,
-  A11y,
-} from "swiper";
-
+import SwiperCore, { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -16,7 +8,7 @@ import { asset, GRK } from "../../../../utils/functions";
 import Image from "../../../common/Image";
 
 // install Swiper modules
-SwiperCore.use([Navigation, Pagination, HashNavigation, Scrollbar, A11y]);
+SwiperCore.use([Navigation, Pagination]);
 
 export default function AvatarSwiper({ data, setReview }: any) {
   const swiperRef = useRef(null);
@@ -28,6 +20,7 @@ export default function AvatarSwiper({ data, setReview }: any) {
 
   useEffect(() => {
     toSlide(data.length / 2, data[Math.floor(data.length / 2)]);
+    //eslint-disable-next-line
   }, []);
 
   if (!data?.length) return <></>;
@@ -45,6 +38,7 @@ export default function AvatarSwiper({ data, setReview }: any) {
           setReview(data[swiper.realIndex]);
         }}
         onSwiper={(swiper) => console.log("swiperoo", swiper)}
+        style={{ overflow: "visible !important" }}
       >
         {data?.map((item: any, index: number) => (
           <SwiperSlide
@@ -54,12 +48,21 @@ export default function AvatarSwiper({ data, setReview }: any) {
               cursor: "pointer",
             }}
           >
-            <div className={`w-[80px] h-[80px] flex justify-center me-0`}>
-              <Image
-                src={asset(item.photo)}
-                className={`w-[80px] h-[80px] relative`}
-              />
-            </div>
+            {({ isActive }) => (
+              <div
+                className={`w-[80px] h-[80px] flex justify-center me-0 ${
+                  isActive && "scale-125 transition-all"
+                }`}
+              >
+                <Image
+                  src={asset(item.photo)}
+                  className={`w-[80px] h-[80px] relative ${
+                    isActive && "rounded-[50%] border-[3px] border-[#c3bc05]"
+                  }`}
+                  alt="user image"
+                />
+              </div>
+            )}
           </SwiperSlide>
         ))}
       </Swiper>
