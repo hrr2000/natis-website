@@ -43,6 +43,23 @@ module.exports = {
         overlay: "rgba(0,0,0,0.5)",
         imageOverlay: "rgba(107, 114, 128, 0.5)",
       },
+
+      gridTemplateColumns: {
+        custom: "2.5rem 1.5fr 2fr 1.5fr 2.5rem",
+      },
+      gridTemplateRows: {
+        custom: "2.5rem 1fr 1fr 2.5rem",
+      },
+      gridColumn: {
+        "2/-2": "2/-2",
+        "1/3s": "1/-3",
+        "1/3e": "-1/3",
+      },
+      gridRow: {
+        "2/-2": "2/-2",
+        "1/3s": "1/3",
+        "1/3e": "-1/-3",
+      },
     },
   },
   plugins: [require("tailwindcss-rtl"), require("@tailwindcss/forms")],
