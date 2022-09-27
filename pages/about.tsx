@@ -6,6 +6,7 @@ import Page from "../models/Page";
 import Head from "next/head";
 import SpecialCard from "../components/sections/common/SpecialCard";
 import {DEFAULT_LOCALE} from "../utils/constants";
+import GoalsSection from "../components/sections/about/GoalsSection";
 
 const About: NextPage = ({ content }: any) => {
   return (
@@ -33,6 +34,10 @@ const About: NextPage = ({ content }: any) => {
         bigTitle={content.mission_big_title}
         description={content.mission_description}
         reverse />
+      <GoalsSection
+        title={`Goals and Objectives`}
+        description={`North America Technical Institute ESL (NATI ESL) is committed to the following institutional goals and objectives`}
+      />
     </main>
   );
 };

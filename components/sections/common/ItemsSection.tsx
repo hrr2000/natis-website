@@ -13,10 +13,10 @@ interface IItemsSection {
 }
 
 export default function ItemsSection({
-  title,
-  headerLink,
-  items,
-  template,
+    title,
+    headerLink,
+    items,
+    template,
 }: IItemsSection) {
   return (
     <SectionWrapper>
