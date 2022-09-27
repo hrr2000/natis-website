@@ -1,12 +1,14 @@
 import type { GetServerSideProps, GetStaticPropsContext, NextPage } from "next";
 // import Navbar from "../components/common/Navbar";
-import HeroSection from "../components/sections/HeroSection";
-import { asset } from "../utils/functions";
-import Page from "../models/Page";
+import HeroSection from "../../components/sections/HeroSection";
+import { asset } from "../../utils/functions";
+import Page from "../../models/Page";
 import Head from "next/head";
-import MembersSection from "../components/sections/home/MembersSection";
+import { useRouter } from "next/router";
+import MemberSection from "../../components/sections/member";
 
 const AdminsSupervisors: NextPage = ({ content, committee_members }: any) => {
+  const router = useRouter();
   return (
     <main className={`w-full`}>
       <Head>
@@ -20,12 +22,14 @@ const AdminsSupervisors: NextPage = ({ content, committee_members }: any) => {
         description={content.hero_description}
         links={content.hero_links}
       />
-      <MembersSection members={committee_members} />
+      <main className="min-h-screen">
+        <MemberSection adminName={router.query.slug} />
+      </main>
     </main>
   );
 };
 
-export async function getStaticProps({ locale }: GetStaticPropsContext) {
+export async function getServerSideProps({ locale }: GetStaticPropsContext) {
   const page = new Page("home_page", locale || "en-US");
 
   return {

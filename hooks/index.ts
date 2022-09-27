@@ -1,3 +1,3 @@
 import useGetFieldLabel from "./useGetFieldLabel";
-
-export { useGetFieldLabel };
+import useOutSideClick from "./useOutSideClick";
+export { useGetFieldLabel, useOutSideClick };

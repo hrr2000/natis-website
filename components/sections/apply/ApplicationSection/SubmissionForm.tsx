@@ -4,11 +4,15 @@ import { Field, Form, Formik, ErrorMessage } from "formik";
 import SelectField from "./SelectField";
 import { submissionForm } from "../../../../utils/validation/schemas";
 import { awaitTimeout } from "../../../../utils/functions";
+import { useRouter } from "next/router";
+
 export default function SubmissionForm({
   setModalState,
 }: {
-  setModalState: (x: number) => void;
+  setModalState: (state: number) => void;
 }) {
+  const router = useRouter();
+
   return (
     <Formik
       initialValues={submissionForm.formInitData}
@@ -19,6 +23,7 @@ export default function SubmissionForm({
         setModalState(2);
         await awaitTimeout(2000);
         setModalState(0);
+        router.push("/");
       }}
       validationSchema={submissionForm.submissionSchema}
     >
