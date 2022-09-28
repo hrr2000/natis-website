@@ -7,7 +7,10 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import MemberSection from "../../components/sections/member";
 
-const AdminsSupervisors: NextPage = ({ content, committee_members }: any) => {
+const AdminsSupervisors: NextPage = ({
+  content,
+  adminDetails: { adminName, adminRole, adminSrcImage, adminStory },
+}: any) => {
   const router = useRouter();
   return (
     <main className={`w-full`}>
@@ -23,7 +26,12 @@ const AdminsSupervisors: NextPage = ({ content, committee_members }: any) => {
         links={content.hero_links}
       />
       <main className="min-h-screen">
-        <MemberSection adminName={router.query.slug} />
+        <MemberSection
+          adminName={adminName}
+          adminRole={adminRole}
+          adminSrcImage={adminSrcImage}
+          adminStory={adminStory}
+        />
       </main>
     </main>
   );
@@ -31,11 +39,24 @@ const AdminsSupervisors: NextPage = ({ content, committee_members }: any) => {
 
 export async function getServerSideProps({ locale }: GetStaticPropsContext) {
   const page = new Page("home_page", locale || "en-US");
-
+  const adminDetails = {
+    adminName: "Dr. Abed Almala",
+    adminSrcImage: shblanga,
+    adminRole: {
+      name: "executive director",
+      description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus laudantium harum sed hic sequi minus aliquid voluptas non id numquam?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quaerat error labore, asperiores velit ducimus temporibus reiciendis in adipisci nihil neque iusto suscipit, quas possimus distinctio nesciunt debitis reprehenderit dolor.,
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quaerat error labore, asperiores velit ducimus temporibus reiciendis in adipisci nihil neque iusto suscipit, quas possimus distinctio nesciunt debitis reprehenderit dolor.,Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quaerat error labore, asperiores velit ducimus temporibus reiciendis in adipisci nihil neque iusto suscipit, quas possimus distinctio nesciunt debitis reprehenderit dolor.,
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quaerat error labore, asperiores velit ducimus temporibus reiciendis in adipisci nihil neque iusto suscipit, quas possimus distinctio nesciunt debitis reprehenderit dolor.,`,
+    },
+    adminStory: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quaerat error labore, asperiores velit ducimus temporibus reiciendis in adipisci nihil neque iusto suscipit, quas possimus distinctio nesciunt debitis reprehenderit dolor.,
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quaerat error labore, asperiores velit ducimus temporibus reiciendis in adipisci nihil neque iusto suscipit, quas possimus distinctio nesciunt debitis reprehenderit dolor.,Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quaerat error labore, asperiores velit ducimus temporibus reiciendis in adipisci nihil neque iusto suscipit, quas possimus distinctio nesciunt debitis reprehenderit dolor.,
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quaerat error labore, asperiores velit ducimus temporibus reiciendis in adipisci nihil neque iusto suscipit, quas possimus distinctio nesciunt debitis reprehenderit dolor.,Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quaerat error labore, asperiores velit ducimus temporibus reiciendis in adipisci nihil neque iusto suscipit, quas possimus distinctio nesciunt debitis reprehenderit dolor.,
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quaerat error labore, asperiores velit ducimus temporibus reiciendis in adipisci nihil neque iusto suscipit, quas possimus distinctio nesciunt debitis reprehenderit dolor.,`,
+  };
   return {
     props: {
       content: await page.data(),
-      committee_members: await page.getItems(`committee_members`),
+      adminDetails,
     },
   };
 }

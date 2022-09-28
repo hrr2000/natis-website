@@ -1,25 +1,10 @@
 import React from "react";
-
-type Props = {};
-
-const AdminDetailsText = (props: Props) => {
+import { AdminDetailsText } from "../../../Types/common";
+const AdminDetailsText = ({ adminName, adminStory }: AdminDetailsText) => {
   return (
-    <section className="flex-1 p-4">
-      <h3>HI</h3>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta culpa
-        vitae in doloribus explicabo odit. Pariatur provident veniam earum
-        quibusdam a, error minima accusantium nulla doloremque velit quidem
-        aperiam obcaecati commodi aut consequuntur. Laboriosam error consectetur
-        corporis facere illo blanditiis explicabo ipsa, dicta ut deserunt
-        tempore cupiditate adipisci dolor, ea at amet, nihil inventore nisi iure
-        debitis sapiente. Praesentium veniam eos et nihil eligendi voluptas,
-        aspernatur autem consequatur recusandae voluptate, vel laudantium cumque
-        alias, ea ex. Aliquam, iure? Recusandae est magnam voluptatibus
-        nesciunt, modi, assumenda non vitae vero temporibus commodi numquam?
-        Dolores nulla repellat quia nesciunt corporis expedita consequatur
-        aliquam.
-      </p>
+    <section className="flex-1">
+      <h2 className="p-0 mb-6 capitalize">about {adminName}</h2>
+      <p className="text-[1.25rem] font-bold">{adminStory}</p>
     </section>
   );
 };
