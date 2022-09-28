@@ -10,7 +10,7 @@ export default function MemberSection({
 }: AdminDetails) {
   return (
     <SectionWrapper dynamic>
-      <div className=" flex flex-col lg:flex-row gap-10 px-12  min-h-[80vh] py-12">
+      <div className="flex flex-col lg:flex-row gap-10  min-h-[80vh] px-7 py-12">
         <AdminDetailsCard
           adminName={adminName}
           adminRole={adminRole}
