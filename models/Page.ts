@@ -15,7 +15,11 @@ export default class Page {
 
   async data() {
     if(this.dataObject) return this.dataObject;
-    return this.dataObject = this.get(this.name) || {};
+    return this.dataObject = {
+      ...(await this.get(this.name) || {}),
+      common_data: (await this.get('common_data') || {}),
+      navbar: (await this.get('navbar') || {})
+    };
   }
 
   async get(name: string) {

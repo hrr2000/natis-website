@@ -1,13 +1,12 @@
 import type { GetServerSideProps, GetStaticPropsContext, NextPage } from "next";
-// import Navbar from "../components/common/Navbar";
-import HeroSection from "../components/sections/HeroSection";
-import { asset } from "../utils/functions";
 import Page from "../models/Page";
+import MainLayout from "../components/layouts/MainLayout";
+import HeroSection from "../components/sections/HeroSection";
 import AboutSection from "../components/sections/home/AboutSection";
-import Head from "next/head";
 import MembersSection from "../components/sections/home/MembersSection";
 import NewsSection from "../components/sections/home/NewsSection";
 import TestimonialsSection from "../components/sections/home/TestimonialsSection";
+import { asset } from "../utils/functions";
 import {DEFAULT_LOCALE} from "../utils/constants";
 
 const Home: NextPage = ({
@@ -17,12 +16,7 @@ const Home: NextPage = ({
   testimonials,
 }: any) => {
   return (
-    <main className={`w-full`}>
-      <Head>
-        <title>{content.title}</title>
-        <meta name="description" content={content.hero_description} />
-      </Head>
-      {/*<Navbar/>*/}
+    <MainLayout content={content}>
       <HeroSection
         backgroundImage={asset(content.hero_image)}
         heading={content.hero_heading}
@@ -53,7 +47,7 @@ const Home: NextPage = ({
         headerLink={{ text: content.new_section_view_all_text, url: "/" }}
         news={news}
       />
-    </main>
+    </MainLayout>
   );
 };
 

@@ -2,6 +2,7 @@ import { ILink } from "../../../../Types/common";
 import Card from "../../../common/Card";
 
 import ItemsSection from "../../common/ItemsSection";
+import {dd, GRK} from "../../../../utils/functions";
 
 interface IMembersSection {
   title?: string;
@@ -19,15 +20,16 @@ export default function MembersSection({
       title={title}
       headerLink={headerLink}
       items={members}
-      template={({ item: { name, photo, role, bio } }: any) => {
+      template={({ item: { name, photo, role, bio }, key }: any) => {
         return (
           <Card
+            key={key}
             name={name}
             photo={photo}
             role={role}
             bio={bio}
             clickable
-            onClick={() => console.log("HI !")}
+            onClick={() => dd('works!')}
           />
         );
       }}

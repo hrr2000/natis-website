@@ -2,24 +2,18 @@ import type { GetStaticPropsContext, NextPage } from "next";
 import HeroSection from "../../components/sections/HeroSection";
 import { asset } from "../../utils/functions";
 import Page from "../../models/Page";
-import Head from "next/head";
+import MainLayout from "../../components/layouts/MainLayout";
 
 const Index: NextPage = ({ content }: any) => {
   return (
-    <>
-      <Head>
-        <title>{content.title}</title>
-        <meta name="description" content={content.hero_description} />
-      </Head>
-      {/*<Navbar/>*/}
+    <MainLayout content={content}>
       <HeroSection
         backgroundImage={asset(content.hero_image)}
         heading={content.hero_heading}
         description={content.hero_description}
         links={content.hero_links}
       />
-      <main className="min-h-screen">HI !</main>
-    </>
+    </MainLayout>
   );
 };
 

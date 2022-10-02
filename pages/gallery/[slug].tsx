@@ -2,10 +2,10 @@ import type { GetStaticPropsContext, NextPage } from "next";
 import HeroSection from "../../components/sections/HeroSection";
 import { asset } from "../../utils/functions";
 import Page from "../../models/Page";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import { createApi } from "unsplash-js";
 import ImageSection from "../../components/sections/gallery/ImageSection";
+import MainLayout from "../../components/layouts/MainLayout";
 
 const serverApi = createApi({
   accessKey: "NETnB7iaAAPpCzrRDsMK4CecMBQXRv5sYR81UKipU5U",
@@ -14,12 +14,7 @@ const serverApi = createApi({
 const Gallery: NextPage = ({ content, photoUrls }: any) => {
   const router = useRouter();
   return (
-    <>
-      <Head>
-        <title>{content.title}</title>
-        <meta name="description" content={content.hero_description} />
-      </Head>
-      {/*<Navbar/>*/}
+    <MainLayout content={content}>
       <HeroSection
         backgroundImage={asset(content.hero_image)}
         heading={content.hero_heading}
@@ -29,7 +24,7 @@ const Gallery: NextPage = ({ content, photoUrls }: any) => {
       <main className="min-h-screen">
         <ImageSection urls={photoUrls} />
       </main>
-    </>
+    </MainLayout>
   );
 };
 

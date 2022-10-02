@@ -56,8 +56,8 @@ export default function AvatarSwiper({ data, setReview }: any) {
               >
                 <Image
                   src={asset(item.photo)}
-                  className={`w-[80px] h-[80px] relative ${
-                    isActive && "rounded-[50%] border-[3px] border-[#c3bc05]"
+                  className={`w-[80px] h-[80px] relative overflow-hidden rounded-[50%] ${
+                    isActive && "border-[3px] border-[#c3bc05]"
                   }`}
                   alt="user image"
                 />

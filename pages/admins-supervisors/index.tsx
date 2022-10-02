@@ -1,19 +1,13 @@
 import type { GetServerSideProps, GetStaticPropsContext, NextPage } from "next";
-// import Navbar from "../components/common/Navbar";
 import HeroSection from "../../components/sections/HeroSection";
 import { asset } from "../../utils/functions";
 import Page from "../../models/Page";
-import Head from "next/head";
 import MembersSection from "../../components/sections/home/MembersSection";
+import MainLayout from "../../components/layouts/MainLayout";
 
 const AdminsSupervisors: NextPage = ({ content, committee_members }: any) => {
   return (
-    <main className={`w-full`}>
-      <Head>
-        <title>{content.title}</title>
-        <meta name="description" content={content.hero_description} />
-      </Head>
-      {/*<Navbar/>*/}
+    <MainLayout content={content}>
       <HeroSection
         backgroundImage={asset(content.hero_image)}
         heading={content.hero_heading}
@@ -21,7 +15,7 @@ const AdminsSupervisors: NextPage = ({ content, committee_members }: any) => {
         links={content.hero_links}
       />
       <MembersSection members={committee_members} />
-    </main>
+    </MainLayout>
   );
 };
 

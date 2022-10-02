@@ -1,21 +1,15 @@
 import type { GetStaticPropsContext, NextPage } from "next";
-// import Navbar from "../components/common/Navbar";
 import HeroSection from "../components/sections/HeroSection";
 import { asset } from "../utils/functions";
 import Page from "../models/Page";
-import Head from "next/head";
 import SpecialCard from "../components/sections/common/SpecialCard";
 import {DEFAULT_LOCALE} from "../utils/constants";
 import GoalsSection from "../components/sections/about/GoalsSection";
+import MainLayout from "../components/layouts/MainLayout";
 
 const About: NextPage = ({ content }: any) => {
   return (
-    <main className={`w-full`}>
-      <Head>
-        <title>{content.title}</title>
-        <meta name="description" content={content.hero_description} />
-      </Head>
-      {/*<Navbar/>*/}
+    <MainLayout content={content}>
       <HeroSection
         backgroundImage={asset(content.hero_image)}
         heading={content.hero_heading}
@@ -38,7 +32,7 @@ const About: NextPage = ({ content }: any) => {
         title={`Goals and Objectives`}
         description={`North America Technical Institute ESL (NATI ESL) is committed to the following institutional goals and objectives`}
       />
-    </main>
+    </MainLayout>
   );
 };
 
