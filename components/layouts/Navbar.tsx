@@ -18,7 +18,7 @@ export default function Navbar({natis_logo, cea_logo, links}: INavbar) {
           <Image className={`relative w-[75.49px] h-[26.26px]`} src={asset(cea_logo)} />
         </div>
         <nav className="flex overflow-visible relative z-50 gap-6">
-          {links.map((link) => {
+          {links?.map((link) => {
             return <span key={GRK('nav_link')} className={`block`}><Link absolute className={`text-white py-2 hover:text-secondary duration-300 font-medium text-sm`} key={GRK('nav_link')} link={link}/></span>
           })}
         </nav>

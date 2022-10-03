@@ -8,7 +8,7 @@ export default function Link({link, children, className, absolute, ...props}: an
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
   return (
     <span
-      className={`justify-center h-min relative w-full`}
+      className={`h-min relative`}
       onMouseOver={() => setIsCollapsed(false)}
       onMouseLeave={() => setIsCollapsed(true)}
     >

@@ -8,7 +8,7 @@ export default class Page {
   directus = new DirectusClient(process.env.DIRECTUS_HOSTNAME || DIRECTUS_HOSTNAME);
   dataObject: any = null;
 
-  constructor(name: string, locale: string) {
+  constructor(name: string = "", locale: string = "en-US") {
     this.name = name;
     this.locale = locale;
   }
@@ -28,6 +28,12 @@ export default class Page {
       ...(await client.getOne(name)),
       ...(await client.getOne(name + '_translations', this.locale)),
     };
+  }
+
+  async getItem(name: string, slug?: string) {
+    if(!slug) return {};
+    const client = this.directus;
+    return (await client.find(name, slug, this.locale))
   }
 
   async getItems(name: string) {

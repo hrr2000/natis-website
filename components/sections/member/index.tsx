@@ -3,14 +3,14 @@ import SectionWrapper from "../common/SectionWrapper";
 import AdminDetailsCard from "./AdminDetails";
 import AdminDetailsText from "./AdminDetailsText";
 
-export default function MemberSection({ title, adminName }: any) {
+export default function MemberSection({ title, name }: any) {
   return (
     <SectionWrapper>
       <header className={`mb-10`}>
-        <SectionHeading text={adminName} />
+        <SectionHeading text={name} />
       </header>
       <div className="flex gap-4 min-h-[80vh]">
-        <AdminDetailsCard />
+        <AdminDetailsCard memberName={name} />
         <AdminDetailsText />
       </div>
     </SectionWrapper>
