@@ -45,10 +45,10 @@ module.exports = {
       },
 
       gridTemplateColumns: {
-        custom: "2.5rem 1.5fr 2fr 1.5fr 2.5rem",
+        custom: "1.5rem 1.5fr 2fr 1.5fr 1.5rem",
       },
       gridTemplateRows: {
-        custom: "2.5rem 1fr 1fr 2.5rem",
+        custom: "1.5rem 1fr 1fr 1.5rem",
       },
       gridColumn: {
         "2/-2": "2/-2",

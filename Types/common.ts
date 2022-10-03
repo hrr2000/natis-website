@@ -17,3 +17,18 @@ export interface InputFields {
 export type labelsType = { [label: string]: string };
 export type contextType = { children: React.ReactNode; labels: labelsType };
 export type errorType = { [label: string]: string };
+
+export type AdminDetailsCard = {
+  adminName: string;
+  adminSrcImage: string;
+  adminRole: {
+    name: string;
+    description: string;
+  };
+};
+export type AdminDetailsText = {
+  adminName: string;
+  adminStory: string;
+};
+
+export type AdminDetails = AdminDetailsCard & AdminDetailsText;
