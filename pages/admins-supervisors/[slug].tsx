@@ -5,10 +5,11 @@ import Page from "../../models/Page";
 import { useRouter } from "next/router";
 import MemberSection from "../../components/sections/member";
 import MainLayout from "../../components/layouts/MainLayout";
-import DirectusClient from "../../services/DirectusClient";
-import {isArray} from "util";
 
-const AdminsSupervisors: NextPage = ({ content, committee_member }: any) => {
+const AdminsSupervisors: NextPage = ({
+  content,
+  adminDetails: { adminName, adminRole, adminSrcImage, adminStory },
+}: any) => {
   const router = useRouter();
   return (
     <MainLayout content={content}>
@@ -19,7 +20,12 @@ const AdminsSupervisors: NextPage = ({ content, committee_member }: any) => {
         links={content.hero_links}
       />
       <main className="min-h-screen">
-        <MemberSection adminName={content.name} />
+        <MemberSection
+          adminName={adminName}
+          adminRole={adminRole}
+          adminSrcImage={adminSrcImage}
+          adminStory={adminStory}
+        />
       </main>
     </MainLayout>
   );
@@ -29,13 +35,27 @@ export async function getStaticProps({ locale, params }: GetStaticPropsContext) 
   const page = new Page("committee_members",locale || "en-US");
   let slug = params?.slug;
   if(Array.isArray(slug)) slug = slug?.[0];
+  const  committee_member = await page.getItem('committee_members', slug);
+  const adminDetails = {
+    adminName: "Dr. Abed Almala",
+    adminSrcImage: "",
+    adminRole: {
+      name: "executive director",
+      description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus laudantium harum sed hic sequi minus aliquid voluptas non id numquam?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quaerat error labore, asperiores velit ducimus temporibus reiciendis in adipisci nihil neque iusto suscipit, quas possimus distinctio nesciunt debitis reprehenderit dolor.,
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quaerat error labore, asperiores velit ducimus temporibus reiciendis in adipisci nihil neque iusto suscipit, quas possimus distinctio nesciunt debitis reprehenderit dolor.,Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quaerat error labore, asperiores velit ducimus temporibus reiciendis in adipisci nihil neque iusto suscipit, quas possimus distinctio nesciunt debitis reprehenderit dolor.,
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quaerat error labore, asperiores velit ducimus temporibus reiciendis in adipisci nihil neque iusto suscipit, quas possimus distinctio nesciunt debitis reprehenderit dolor.,`,
+    },
+    adminStory: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quaerat error labore, asperiores velit ducimus temporibus reiciendis in adipisci nihil neque iusto suscipit, quas possimus distinctio nesciunt debitis reprehenderit dolor.,
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quaerat error labore, asperiores velit ducimus temporibus reiciendis in adipisci nihil neque iusto suscipit, quas possimus distinctio nesciunt debitis reprehenderit dolor.,Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quaerat error labore, asperiores velit ducimus temporibus reiciendis in adipisci nihil neque iusto suscipit, quas possimus distinctio nesciunt debitis reprehenderit dolor.,
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quaerat error labore, asperiores velit ducimus temporibus reiciendis in adipisci nihil neque iusto suscipit, quas possimus distinctio nesciunt debitis reprehenderit dolor.,Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quaerat error labore, asperiores velit ducimus temporibus reiciendis in adipisci nihil neque iusto suscipit, quas possimus distinctio nesciunt debitis reprehenderit dolor.,
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quaerat error labore, asperiores velit ducimus temporibus reiciendis in adipisci nihil neque iusto suscipit, quas possimus distinctio nesciunt debitis reprehenderit dolor.,`,
+  };
   return {
     props: {
       content: await page.data(),
-      committee_member: await page.getItem('committee_members', slug),
+      adminDetails,
     },
   };
-
 }
 
 export async function getStaticPaths() {
