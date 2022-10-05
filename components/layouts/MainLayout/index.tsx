@@ -1,41 +1,78 @@
 import Head from "next/head";
 import Navbar from "../Navbar";
-import {ReactNode} from "react";
+import {ReactNode, useEffect, useRef, useState} from "react";
 import {ILink} from "../../../Types/common";
 import Footer from "../Footer";
+import HeroSection from "../../sections/HeroSection";
+import {asset, dd} from "../../../utils/functions";
+import Topbar from "../Topbar";
 
 interface IMainLayout {
   content: {
     title: string;
+    hero_image: string;
+    hero_heading: string;
     hero_description: string;
+    hero_links?: ILink[];
     common_data: {
       natis_logo: string;
       cea_logo: string;
+      natis_logo_dark: string;
+      cea_logo_dark: string;
       about_natis: string;
     };
     navbar: {
       links: ILink[];
-    }
+    };
+    topbar: {
+      links: ILink[];
+      apply_button_text: string;
+    };
   };
   children: ReactNode;
 }
 
-export default function MainLayout({content, children}: IMainLayout) {
+export default function    MainLayout({content, children}: IMainLayout) {
+
+  const [isNavbarFixed, setIsNavbarFixed] = useState<boolean>(false);
+  const [isScrollEventAdded, setIsScrollEventAdded] = useState<boolean>(false);
+
+  useEffect(() => {
+    if(typeof window !== 'undefined' && !isScrollEventAdded) {
+      setIsScrollEventAdded(true);
+      window?.addEventListener('scroll', (e: any) => setIsNavbarFixed(window.scrollY > 70));
+    }
+  }, [])
+
   return (
-    <main className={`w-full`}>
+    <main className={`w-full ${isNavbarFixed ? 'pt-[130px]' : ''}`}>
       <Head>
         <title>{content.title}</title>
         <meta name="description" content={content.hero_description} />
       </Head>
-      <Navbar
-        natis_logo={content.common_data.natis_logo}
-        cea_logo={content.common_data.cea_logo}
-        links={content.navbar.links}
+      <div className={`top-0 z-50 w-full transition-all duration-500 ${isNavbarFixed ? `fixed top-0` : `top-[-200px]`}`}>
+        <Topbar
+          links={content.topbar.links}
+          apply_button_text={content.topbar.apply_button_text}
+        />
+        <Navbar
+          natis_logo={content.common_data.natis_logo}
+          cea_logo={content.common_data.cea_logo}
+          links={content.navbar.links}
+        />
+      </div>
+      <HeroSection
+        backgroundImage={asset(content.hero_image)}
+        heading={content.hero_heading}
+        description={content.hero_description}
+        links={content.hero_links}
       />
       {children}
       <Footer
         about_natis={content.common_data.about_natis}
         natis_logo={content.common_data.natis_logo}
+        natis_logo_dark={content.common_data.natis_logo_dark}
+        cea_logo_dark={content.common_data.cea_logo_dark}
       />
     </main>
   )

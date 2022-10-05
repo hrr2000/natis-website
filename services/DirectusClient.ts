@@ -1,3 +1,5 @@
+import {dd} from "../utils/functions";
+
 export default class DirectusClient {
   hostname = "";
 
@@ -24,11 +26,10 @@ export default class DirectusClient {
   }
 
   async find(name: string, slug: string, locale?: string) {
-    const [item, translatedItem] = await Promise.all([this.get(name), this.get(`${name}?filter[languages_code][_eq]=${locale}`)]);
-
-    if (Array.isArray(item)) return item?.[0];
-    if (Array.isArray(translatedItem)) return translatedItem?.[0];
-
+    let item = await  this.get(`${name}?filter[slug][_eq]=${slug}`);
+    if (Array.isArray(item)) item = item?.[0];
+    let translatedItem = await this.get(`${name}_translations?filter[${name}_id][_eq]=${item.id}&filter[languages_code][_eq]=${locale}`);
+    if (Array.isArray(translatedItem)) translatedItem = translatedItem?.[0];
     return {
       ...item,
       ...translatedItem

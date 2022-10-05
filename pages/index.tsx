@@ -17,12 +17,6 @@ const Home: NextPage = ({
 }: any) => {
   return (
     <MainLayout content={content}>
-      <HeroSection
-        backgroundImage={asset(content.hero_image)}
-        heading={content.hero_heading}
-        description={content.hero_description}
-        links={content.hero_links}
-      />
       <AboutSection
         title={content.about_section_title}
         videoCover={asset(content.about_section_video_cover)}
@@ -36,7 +30,7 @@ const Home: NextPage = ({
           text: content.members_section_view_all_text,
           url: "/admins-supervisors",
         }}
-        members={committee_members}
+        members={committee_members.slice(-3)}
       />
       <TestimonialsSection
         title={content.testimonials_section_title}
@@ -45,7 +39,7 @@ const Home: NextPage = ({
       <NewsSection
         title={content.new_section_title}
         headerLink={{ text: content.new_section_view_all_text, url: "/" }}
-        news={news}
+        news={news.slice(-3)}
       />
     </MainLayout>
   );

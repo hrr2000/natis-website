@@ -37,6 +37,7 @@ module.exports = {
       colors: {
         primary: "#272F54",
         secondary: "#C3BC05",
+        topbar: "#F6F8F9",
         label: "#666D83",
         border: "#EBEDED",
         placeholder: "#D6D8DF",
@@ -45,10 +46,10 @@ module.exports = {
       },
 
       gridTemplateColumns: {
-        custom: "1.5rem 1.5fr 2fr 1.5fr 1.5rem",
+        custom: "3rem 1.5fr 2fr 1.5fr 3rem",
       },
       gridTemplateRows: {
-        custom: "1.5rem 1fr 1fr 1.5rem",
+        custom: "3rem 1fr 1fr 3rem",
       },
       gridColumn: {
         "2/-2": "2/-2",

@@ -10,11 +10,6 @@ import MainLayout from "../components/layouts/MainLayout";
 const Apply: NextPage = ({ content, labels }: any) => {
   return (
     <MainLayout content={content}>
-      <HeroSection
-        backgroundImage={asset(content.hero_image)}
-        heading={content.hero_heading}
-        description={content.hero_description}
-      />
       <ApplicationSection title={content.form_title} labels={labels} />
     </MainLayout>
   );
@@ -40,8 +35,6 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
     totalClockHours: content.total_clock_hours_label,
     enrollmentPeriodTerm: content.enrollment_period_term_label,
   };
-
-  dd(content);
   return {
     props: {
       content,

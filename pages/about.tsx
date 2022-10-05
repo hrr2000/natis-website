@@ -1,5 +1,4 @@
 import type { GetStaticPropsContext, NextPage } from "next";
-import HeroSection from "../components/sections/HeroSection";
 import { asset } from "../utils/functions";
 import Page from "../models/Page";
 import SpecialCard from "../components/sections/common/SpecialCard";
@@ -10,12 +9,6 @@ import MainLayout from "../components/layouts/MainLayout";
 const About: NextPage = ({ content }: any) => {
   return (
     <MainLayout content={content}>
-      <HeroSection
-        backgroundImage={asset(content.hero_image)}
-        heading={content.hero_heading}
-        description={content.hero_description}
-        links={content.hero_links}
-      />
       <SpecialCard
         image={asset(content.about_image)}
         smallTitle={content.about_small_title}
@@ -38,7 +31,6 @@ const About: NextPage = ({ content }: any) => {
 
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
   const page = new Page("about_page", locale || DEFAULT_LOCALE);
-  console.log(await page.data());
   return {
     props: {
       content: await page.data(),

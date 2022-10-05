@@ -1,14 +1,14 @@
 import DirectusClient from "../services/DirectusClient";
-import {DIRECTUS_HOSTNAME} from "../utils/constants";
+import {DEFAULT_LOCALE, DIRECTUS_HOSTNAME} from "../utils/constants";
 
 export default class Page {
 
   name = "";
-  locale = "en-US";
+  locale = DEFAULT_LOCALE;
   directus = new DirectusClient(process.env.DIRECTUS_HOSTNAME || DIRECTUS_HOSTNAME);
   dataObject: any = null;
 
-  constructor(name: string = "", locale: string = "en-US") {
+  constructor(name: string = "", locale: string = DEFAULT_LOCALE) {
     this.name = name;
     this.locale = locale;
   }
@@ -18,7 +18,8 @@ export default class Page {
     return this.dataObject = {
       ...(await this.get(this.name) || {}),
       common_data: (await this.get('common_data') || {}),
-      navbar: (await this.get('navbar') || {})
+      navbar: (await this.get('navbar') || {}),
+      topbar: (await this.get('topbar') || {})
     };
   }
 

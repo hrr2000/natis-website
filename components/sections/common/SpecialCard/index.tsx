@@ -3,7 +3,7 @@ import Image from '../../../common/Image';
 
 interface ISpecialCard {
   image: string;
-  smallTitle: string;
+  smallTitle?: string;
   bigTitle: string;
   description: string;
   reverse?: boolean;
@@ -19,7 +19,7 @@ export default function SpecialCard({image, smallTitle, bigTitle, description, r
     <div className="flex items-center justify-center mx-auto my-32  container">
       <div className="flex w-full justify-start py-6 sm:py-12" dir={containerDirection}>
         <div className="h-[600px] basis-2/12 bg-secondary"></div>
-        <div className="-mt-24 h-[600px] basis-4/12 bg-black relative z-1" style={{
+        <div className="-mt-24 h-[600px] basis-4/12 relative z-1" style={{
           marginInlineStart: '-8.333333%'
         }}>
           <Image src={image} objectFit={'cover'} />

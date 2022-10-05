@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { createApi } from "unsplash-js";
 import ImageSection from "../../components/sections/gallery/ImageSection";
 import MainLayout from "../../components/layouts/MainLayout";
+import {DEFAULT_LOCALE} from "../../utils/constants";
 
 const serverApi = createApi({
   accessKey: "NETnB7iaAAPpCzrRDsMK4CecMBQXRv5sYR81UKipU5U",
@@ -32,7 +33,7 @@ export async function getServerSideProps({
   locale,
   params,
 }: GetStaticPropsContext) {
-  const page = new Page("home_page", locale || "en-US");
+  const page = new Page("home_page", locale || DEFAULT_LOCALE);
   const photos = (
     await serverApi.search.getPhotos({
       query: params?.slug as string,

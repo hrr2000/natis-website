@@ -9,8 +9,8 @@ export default function MemberSection({
   adminStory,
 }: AdminDetails) {
   return (
-    <SectionWrapper dynamic>
-      <div className="flex flex-col lg:flex-row gap-10  min-h-[80vh] px-7 py-12">
+    <SectionWrapper>
+      <div className="grid grid-cols-12 lg:flex-row gap-10 px-7 py-12">
         <AdminDetailsCard
           adminName={adminName}
           adminRole={adminRole}

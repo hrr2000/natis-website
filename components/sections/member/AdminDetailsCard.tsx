@@ -8,14 +8,13 @@ const AdminDetailsCard = ({
   adminRole,
 }: AdminDetailsCard) => {
   return (
-    <section className="grid-cols-custom grid-rows-custom grid flex-1 min-h-[80vh] bg-primary">
+    <section className="grid-cols-custom grid-rows-custom grid flex-1 col-span-5">
       <div className="col-1/3s row-1/3s bg-secondary"></div>
       <div className="col-2/-2 row-2/-2 bg-white z-20 flex flex-col ">
         <Image
           src={adminSrcImage}
           alt=""
-          className="relative border-0 rounded-none h-[250px]"
-          priority
+          className="relative border-0 rounded-none h-[400px]"
           objectFit="cover"
         />
         <div className="flex gap-4 lg:gap-2 p-6 flex-col flex-1 justify-center ">
@@ -23,7 +22,7 @@ const AdminDetailsCard = ({
             {adminRole.name}
           </h4>
           <h2 className="p-0 lg:text-[3.125rem] leading-snug">{adminName}</h2>
-          <p className="leading-[1.4] font-bold text-lg overflow-auto h-[20rem]">
+          <p className="leading-[1.4] font-bold text-lg overflow-auto">
             {adminRole.description}
           </p>
         </div>

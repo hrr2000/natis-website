@@ -15,7 +15,7 @@ export default function Link({link, children, className, absolute, ...props}: an
       <NextLink href={link?.url || "/"}>
         <a {...props} className={`flex items-center w-max ${className || ""}`}>
           {link?.text || ""}  {children}
-          {!!link.items?.length && (
+          {!!link?.items?.length && (
             <span className={`ms-2`}>
               {isCollapsed ? (
                 <IoIosArrowDown size={13} />
@@ -26,7 +26,7 @@ export default function Link({link, children, className, absolute, ...props}: an
           )}
         </a>
       </NextLink>
-      {!!link.items?.length && (
+      {!!link?.items?.length && (
         <div
           className={
             `bg-white font-medium text-gray-400 duration-100 overflow-hidden flex flex-col
