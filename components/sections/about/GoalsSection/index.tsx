@@ -1,11 +1,19 @@
 import SectionWrapper from "../../common/SectionWrapper";
+import GoalsCard from "./GoalsCard";
+import {asset, GRK} from "../../../../utils/functions";
 
 interface IGoalsSection {
   title: string;
   description: string;
+  items: {
+    icon_svg: string;
+    image: string;
+    title: string;
+    description: string;
+  }[];
 }
 
-export default function GoalsSection({title, description}: IGoalsSection) {
+export default function GoalsSection({title, description, items}: IGoalsSection) {
   return (
     <SectionWrapper>
       <header className={`text-center`}>
@@ -16,8 +24,18 @@ export default function GoalsSection({title, description}: IGoalsSection) {
           {description}
         </p>
       </header>
-      <main>
-
+      <main className={`flex justify-center flex-wrap`}>
+        {items?.map((item) => {
+          return (
+            <GoalsCard
+              key={GRK('goals_item')}
+              icon={item.icon_svg}
+              image={asset(item.image)}
+              title={item.title}
+              description={item.description}
+            />
+          )
+        })}
       </main>
     </SectionWrapper>
   )

@@ -5,8 +5,9 @@ import SpecialCard from "../components/sections/common/SpecialCard";
 import {DEFAULT_LOCALE} from "../utils/constants";
 import GoalsSection from "../components/sections/about/GoalsSection";
 import MainLayout from "../components/layouts/MainLayout";
+import AdminsSection from "../components/sections/about/AdminsSection";
 
-const About: NextPage = ({ content }: any) => {
+const About: NextPage = ({ content, goals_and_objectives, committee_members }: any) => {
   return (
     <MainLayout content={content}>
       <SpecialCard
@@ -22,8 +23,14 @@ const About: NextPage = ({ content }: any) => {
         description={content.mission_description}
         reverse />
       <GoalsSection
-        title={`Goals and Objectives`}
-        description={`North America Technical Institute ESL (NATI ESL) is committed to the following institutional goals and objectives`}
+        title={content.goals_section_title}
+        description={content.goals_section_description}
+        items={goals_and_objectives || []}
+      />
+      <AdminsSection
+        title={content.admins_section_title}
+        description={content.admins_section_description}
+        items={committee_members || []}
       />
     </MainLayout>
   );
@@ -31,9 +38,16 @@ const About: NextPage = ({ content }: any) => {
 
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
   const page = new Page("about_page", locale || DEFAULT_LOCALE);
+  const [content, committee_members, goals_and_objectives] = await Promise.all([
+    page.data(),
+    page.getItems(`committee_members`),
+    page.getItems(`goals_and_objectives`)
+  ]);
   return {
     props: {
-      content: await page.data(),
+      content,
+      committee_members,
+      goals_and_objectives
     },
   };
 }
