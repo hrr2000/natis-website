@@ -29,22 +29,22 @@ const AdminDetailsCard = ({
             {adminRole.description}
           </p>
           <div className={`text-primary flex py-5 gap-8`}>
-            <Link href={adminSocial.instagram}>
+            <Link href={adminSocial.instagram || '/'}>
               <a>
                 <FaInstagram size={25} />
               </a>
             </Link>
-            <Link href={adminSocial.twitter}>
+            <Link href={adminSocial.twitter || '/'}>
               <a>
                 <FaTwitter size={25} />
               </a>
             </Link>
-            <Link href={adminSocial.facebook}>
+            <Link href={adminSocial.facebook || '/'}>
               <a>
                 <FaFacebookF size={25} />
               </a>
             </Link>
-            <Link href={adminSocial.linkedin}>
+            <Link href={adminSocial.linkedin || '/'}>
               <a>
                 <FaLinkedin size={25} />
               </a>

@@ -41,7 +41,7 @@ export default function MainLayout({content, children}: IMainLayout) {
   const [isScrollEventAdded, setIsScrollEventAdded] = useState<boolean>(false);
 
   useEffect(() => {
-    console.log(router.pathname, content?.breadcrumbs);
+    // console.log(router.pathname, content?.breadcrumbs);
     if(typeof window !== 'undefined' && !isScrollEventAdded) {
       setIsScrollEventAdded(true);
       window?.addEventListener('scroll', (e: any) => setIsNavbarFixed(window.scrollY > 70));

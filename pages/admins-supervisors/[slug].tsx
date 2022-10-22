@@ -28,7 +28,7 @@ export async function getStaticProps({ locale, params }: GetStaticPropsContext) 
   const page = new Page("admins_page",locale || DEFAULT_LOCALE);
   let slug = params?.slug;
   if(Array.isArray(slug)) slug = slug?.[0];
-  const  committee_member: any = await page.getItem('committee_members', {key: 'slug', value: slug || ''});
+  const committee_member: any = await page.getItem('committee_members', {key: 'slug', value: slug || ''});
   return {
     props: {
       content: {
