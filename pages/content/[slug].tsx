@@ -34,8 +34,8 @@ export async function getStaticProps({ locale, params }: GetStaticPropsContext) 
       page: {
         content: content_page.content
       },
-      revalidate: 10,
     },
+    revalidate: 10,
   };
 }
 
