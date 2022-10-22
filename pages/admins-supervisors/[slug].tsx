@@ -3,10 +3,11 @@ import Page from "../../models/Page";
 import MemberSection from "../../components/sections/member";
 import MainLayout from "../../components/layouts/MainLayout";
 import {asset, dd} from "../../utils/functions";
+import {DEFAULT_LOCALE} from "../../utils/constants";
 
-const AdminsSupervisors: NextPage = ({
+const AdminsSupervisorsItem: NextPage = ({
   content,
-  adminDetails: { adminName, adminRole, adminSrcImage, adminStory },
+  adminDetails: { adminName, adminRole, adminSrcImage, adminStory, adminSocial },
 }: any) => {
   return (
     <MainLayout content={content}>
@@ -16,6 +17,7 @@ const AdminsSupervisors: NextPage = ({
           adminRole={adminRole}
           adminSrcImage={asset(adminSrcImage)}
           adminStory={adminStory}
+          adminSocial={adminSocial}
         />
       </main>
     </MainLayout>
@@ -23,10 +25,10 @@ const AdminsSupervisors: NextPage = ({
 };
 
 export async function getStaticProps({ locale, params }: GetStaticPropsContext) {
-  const page = new Page("admins_page",locale || "en-US");
+  const page = new Page("admins_page",locale || DEFAULT_LOCALE);
   let slug = params?.slug;
   if(Array.isArray(slug)) slug = slug?.[0];
-  const  committee_member: any = await page.getItem('committee_members', slug);
+  const  committee_member: any = await page.getItem('committee_members', {key: 'slug', value: slug || ''});
   return {
     props: {
       content: {
@@ -41,6 +43,12 @@ export async function getStaticProps({ locale, params }: GetStaticPropsContext) 
         adminRole: {
           name: committee_member.role,
           description: committee_member.bio,
+        },
+        adminSocial: {
+          facebook: committee_member.facebook_url,
+          twitter: committee_member.twitter_url,
+          linkedin: committee_member.linkedin_url,
+          instagram: committee_member.instagram_url,
         },
         adminStory: committee_member.about,
       },
@@ -62,4 +70,4 @@ export async function getStaticPaths() {
 }
 
 
-export default AdminsSupervisors;
+export default AdminsSupervisorsItem;

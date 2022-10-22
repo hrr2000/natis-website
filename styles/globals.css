@@ -76,6 +76,42 @@ div.swiper-slide {
   margin: 0;
 }
 
+
+.blog-content {
+  @apply text-justify my-5
+}
+.blog-content iframe, .blog-content img {
+  @apply w-full
+}
+.blog-content p {
+  @apply text-lg my-2
+}
+.blog-content a {
+  @apply text-blue-500 underline
+}
+
+.accordion__title {
+  background-color: white;
+  color: rgb(77, 77, 77);
+  font-weight: bold;
+  border: 0;
+  box-shadow: 0 0.5px 2px rgb(168, 168, 168);
+  padding: 1px 20px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.accordion__content {
+  font-size: 13px;
+  color: rgb(77, 77, 77);
+  overflow-y: hidden;
+  transition: all 0.5s;
+}
+
+.accordion__section {
+  width: 100%;
+}
+
 /*7asby alah ya mustafa xDD*/
 
 @media only screen and (max-width: 600px) {

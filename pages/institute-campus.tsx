@@ -8,6 +8,7 @@ import MainLayout from "../components/layouts/MainLayout";
 const InstituteCampus: NextPage = ({ content }: any) => {
   return (
     <MainLayout content={content}>
+      <div className={`w-full xl:h-[200px]`} />
       <SpecialCard
         image={asset(content.admissions_image)}
         bigTitle={content.admissions_title}

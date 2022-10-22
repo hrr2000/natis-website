@@ -21,7 +21,7 @@ export default function Video({videoCover, videoUrl, noOverlay}: IVideo) {
 
       {isStarted || (
         <div className={`relative w-full h-[315px] rounded-lg overflow-hidden`}>
-          <Image src={videoCover} objectFit={`cover`} />
+          {!!videoCover && <Image src={videoCover} objectFit={`cover`} />}
           {noOverlay || <Overlay />}
           <div
             className={`absolute w-full h-full flex justify-center items-center group cursor-pointer`}

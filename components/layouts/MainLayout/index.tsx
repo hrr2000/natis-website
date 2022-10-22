@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Navbar from "../Navbar";
-import {ReactNode, useEffect, useRef, useState} from "react";
+import {ReactNode, useEffect, useState} from "react";
+import {useRouter} from "next/router";
 import {ILink} from "../../../Types/common";
 import Footer from "../Footer";
 import HeroSection from "../../sections/HeroSection";
@@ -14,6 +15,7 @@ interface IMainLayout {
     hero_heading: string;
     hero_description: string;
     hero_links?: ILink[];
+    breadcrumbs: any;
     common_data: {
       natis_logo: string;
       cea_logo: string;
@@ -32,12 +34,14 @@ interface IMainLayout {
   children: ReactNode;
 }
 
-export default function    MainLayout({content, children}: IMainLayout) {
+export default function MainLayout({content, children}: IMainLayout) {
 
+  const router = useRouter();
   const [isNavbarFixed, setIsNavbarFixed] = useState<boolean>(false);
   const [isScrollEventAdded, setIsScrollEventAdded] = useState<boolean>(false);
 
   useEffect(() => {
+    console.log(router.pathname, content?.breadcrumbs);
     if(typeof window !== 'undefined' && !isScrollEventAdded) {
       setIsScrollEventAdded(true);
       window?.addEventListener('scroll', (e: any) => setIsNavbarFixed(window.scrollY > 70));
@@ -45,7 +49,7 @@ export default function    MainLayout({content, children}: IMainLayout) {
   }, [])
 
   return (
-    <main className={`w-full ${isNavbarFixed ? 'pt-[130px]' : ''}`}>
+    <main className={`w-full overflow-hidden ${isNavbarFixed ? 'pt-[130px]' : ''}`}>
       <Head>
         <title>{content.title}</title>
         <meta name="description" content={content.hero_description} />
@@ -66,6 +70,7 @@ export default function    MainLayout({content, children}: IMainLayout) {
         heading={content.hero_heading}
         description={content.hero_description}
         links={content.hero_links}
+        breadcrumbs={content?.breadcrumbs?.[router.pathname] || []}
       />
       {children}
       <Footer

@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import "animate.css/animate.min.css";
 import type { AppProps } from "next/app";
 import ProgressBar from "@badrap/bar-of-progress";
 import {Router} from "next/router";

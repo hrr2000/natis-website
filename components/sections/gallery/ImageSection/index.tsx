@@ -4,10 +4,10 @@ import Image from "../../../common/Image";
 import Modal from "../../../common/Modal";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
-import { GRK } from "../../../../utils/functions";
+import {asset, GRK} from "../../../../utils/functions";
 import { useState } from "react";
 import { useOutSideClick } from "../../../../hooks";
-import { AiFillEye } from "react-icons/Ai";
+import { AiFillEye } from "react-icons/ai";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -43,7 +43,7 @@ export default function ImageSection({
               onClick={() => handleClick(index)}
             >
               <Image
-                src={url}
+                src={asset(url)}
                 alt=""
                 className="relative h-52 border-0 rounded-none group-hover:scale-125 transition-all"
                 priority
@@ -68,7 +68,7 @@ export default function ImageSection({
               {urls?.map((url) => (
                 <SwiperSlide key={GRK(url)}>
                   <Image
-                    src={url}
+                    src={asset(url)}
                     alt=""
                     className="relative h-full border-0 rounded-none"
                     priority

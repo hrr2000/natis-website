@@ -25,9 +25,10 @@ export default class DirectusClient {
     return response;
   }
 
-  async find(name: string, slug: string, locale?: string) {
-    let item = await  this.get(`${name}?filter[slug][_eq]=${slug}`);
+  async find(name: string, slug: {key: string, value: string}, locale?: string) {
+    let item = await this.get(`${name}?filter[${slug.key}][_eq]=${slug.value}`);
     if (Array.isArray(item)) item = item?.[0];
+    if(!item) return {};
     let translatedItem = await this.get(`${name}_translations?filter[${name}_id][_eq]=${item.id}&filter[languages_code][_eq]=${locale}`);
     if (Array.isArray(translatedItem)) translatedItem = translatedItem?.[0];
     return {
@@ -47,7 +48,7 @@ export default class DirectusClient {
       name + "_translations" + `?filter[languages_code][_eq]=${locale}`
     );
 
-    if (!Array.isArray(translations)) return [];
+    if (!Array.isArray(translations)) return items;
 
     const translationsMap = new Map();
 

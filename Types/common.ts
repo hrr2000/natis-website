@@ -25,6 +25,13 @@ export type AdminDetailsCard = {
     name: string;
     description: string;
   };
+  adminSocial: {
+    facebook: string;
+    twitter: string;
+    instagram: string;
+    linkedin: string;
+  }
+
 };
 export type AdminDetailsText = {
   adminName: string;

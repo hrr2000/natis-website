@@ -1,53 +1,58 @@
 import type { GetStaticPropsContext, NextPage } from "next";
-import HeroSection from "../../components/sections/HeroSection";
-import { asset } from "../../utils/functions";
 import Page from "../../models/Page";
 import { useRouter } from "next/router";
-import { createApi } from "unsplash-js";
 import ImageSection from "../../components/sections/gallery/ImageSection";
 import MainLayout from "../../components/layouts/MainLayout";
 import {DEFAULT_LOCALE} from "../../utils/constants";
 
-const serverApi = createApi({
-  accessKey: "NETnB7iaAAPpCzrRDsMK4CecMBQXRv5sYR81UKipU5U",
-});
 
-const Gallery: NextPage = ({ content, photoUrls }: any) => {
+const Gallery: NextPage = ({ content, galleryDetails }: any) => {
   const router = useRouter();
   return (
     <MainLayout content={content}>
-      <HeroSection
-        backgroundImage={asset(content.hero_image)}
-        heading={content.hero_heading}
-        description={content.hero_description}
-        links={content.hero_links}
-      />
       <main className="min-h-screen">
-        <ImageSection urls={photoUrls} />
+        <ImageSection urls={galleryDetails.images} />
       </main>
     </MainLayout>
   );
-};
+}
 
-export async function getServerSideProps({
-  locale,
-  params,
-}: GetStaticPropsContext) {
-  const page = new Page("home_page", locale || DEFAULT_LOCALE);
-  const photos = (
-    await serverApi.search.getPhotos({
-      query: params?.slug as string,
-      page: 1,
-      perPage: 10,
-    })
-  ).response?.results;
+export default Gallery;
 
-  const photoUrls = photos?.map((el: any) => el?.urls.full);
+export async function getStaticProps({ locale, params }: GetStaticPropsContext) {
+  const page = new Page("gallery_page",locale || DEFAULT_LOCALE);
+  let slug = params?.slug;
+  if(Array.isArray(slug)) slug = slug?.[0];
+  const  gallery: any = await page.getItem('galleries', {key: 'slug', value: slug || ''});
+  let images: any = await page.getItems('galleries_files_1');
+  images = images.filter((image: any) => image.galleries_id === gallery.galleries_id);
+  console.log(gallery);
+  images = images.map((image: any) => image.directus_files_id);
   return {
     props: {
-      content: await page.data(),
-      photoUrls,
+      content: {
+        ...await page.data(),
+        title: gallery.gallery_title,
+        hero_heading: gallery.gallery_title,
+        hero_description: gallery.gallery_title,
+      },
+      galleryDetails: {
+        ...gallery,
+        images
+      },
     },
   };
 }
-export default Gallery;
+
+export async function getStaticPaths() {
+  const page = new Page();
+  const paths = [];
+  const galleries = await page.getItems(`galleries`);
+  for(let gallery of galleries) {
+    paths.push({params: {slug: gallery.slug}})
+  }
+  return {
+    paths,
+    fallback: false,
+  }
+}

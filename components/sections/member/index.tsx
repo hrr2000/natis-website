@@ -6,6 +6,7 @@ export default function MemberSection({
   adminName,
   adminRole,
   adminSrcImage,
+  adminSocial,
   adminStory,
 }: AdminDetails) {
   return (
@@ -15,6 +16,7 @@ export default function MemberSection({
           adminName={adminName}
           adminRole={adminRole}
           adminSrcImage={adminSrcImage}
+          adminSocial={adminSocial}
         />
         <AdminDetailsText adminName={adminName} adminStory={adminStory} />
       </div>

@@ -1,7 +1,6 @@
-import type { GetServerSideProps, GetStaticPropsContext, NextPage } from "next";
+import type { GetStaticPropsContext, NextPage } from "next";
 import Page from "../models/Page";
 import MainLayout from "../components/layouts/MainLayout";
-import HeroSection from "../components/sections/HeroSection";
 import AboutSection from "../components/sections/home/AboutSection";
 import MembersSection from "../components/sections/home/MembersSection";
 import NewsSection from "../components/sections/home/NewsSection";

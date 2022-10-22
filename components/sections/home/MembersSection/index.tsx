@@ -2,13 +2,12 @@ import { ILink } from "../../../../Types/common";
 import Card from "../../../common/Card";
 
 import ItemsSection from "../../common/ItemsSection";
-import {dd, GRK} from "../../../../utils/functions";
-import Link from "../../../common/Link";
+import {CommitteeMember} from "../../../../Types/directus";
 
 interface IMembersSection {
   title?: string;
   headerLink?: ILink;
-  members: any[];
+  members: CommitteeMember[];
 }
 
 export default function MembersSection({

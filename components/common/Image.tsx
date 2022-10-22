@@ -13,8 +13,8 @@ export default function Image({ src, className, alt, ...props }: ImageType) {
         src={src}
         layout={`fill`}
         alt={alt || ""}
-        placeholder={`blur`}
-        blurDataURL={typeof src === 'string' ? src : ''}
+        // placeholder={`blur`}
+        // blurDataURL={typeof src === 'string' ? src : ''}
         {...props}
       />
     </figure>

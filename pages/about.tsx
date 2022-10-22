@@ -10,6 +10,7 @@ import AdminsSection from "../components/sections/about/AdminsSection";
 const About: NextPage = ({ content, goals_and_objectives, committee_members }: any) => {
   return (
     <MainLayout content={content}>
+      <div className={`w-full xl:h-[200px]`} />
       <SpecialCard
         image={asset(content.about_image)}
         smallTitle={content.about_small_title}

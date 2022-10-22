@@ -1,27 +1,25 @@
 import type { GetStaticPropsContext, NextPage } from "next";
 import Page from "../../models/Page";
+import NewsSection from "../../components/sections/home/NewsSection";
 import MainLayout from "../../components/layouts/MainLayout";
 import {DEFAULT_LOCALE} from "../../utils/constants";
-import {dd} from "../../utils/functions";
-import GalleriesSection from "../../components/sections/gallery/GalleriesSection";
 
-const Index: NextPage = ({ content, galleries }: any) => {
-  dd(galleries[0].images);
+const News: NextPage = ({ content, news }: any) => {
   return (
     <MainLayout content={content}>
-      <GalleriesSection galleries={galleries} />
+        <NewsSection news={news} />
     </MainLayout>
   );
 };
 
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
-  const page = new Page("gallery_page", locale || DEFAULT_LOCALE);
+  const page = new Page("news_page", locale || DEFAULT_LOCALE);
 
   return {
     props: {
       content: await page.data(),
-      galleries: await page.getItems(`galleries`),
+      news: await page.getItems(`news`),
     },
   };
 }
-export default Index;
+export default News;
