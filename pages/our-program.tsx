@@ -41,7 +41,7 @@ const InstituteCampus: NextPage = ({ content }: any) => {
         </ContentWrapper>
       </div>
       <SectionWrapper className={`my-10`}>
-        {content.program_classes.map((item: any, index: number) => {
+        {content.program_classes?.map((item: any, index: number) => {
             return (
               <Accordion key={GRK('accordion')} title={(active: boolean) => {
                 return (
