@@ -1,9 +1,7 @@
 import type {GetStaticPropsContext, NextPage} from "next";
 import Page from "../../models/Page";
-import MemberSection from "../../components/sections/member";
 import MainLayout from "../../components/layouts/MainLayout";
-import {asset, dd} from "../../utils/functions";
-import {DEFAULT_LOCALE} from "../../utils/constants";
+import {DEFAULT_LOCALE, REVALIDATE_BUILD_TIME} from "../../utils/constants";
 import SectionWrapper from "../../components/sections/common/SectionWrapper";
 import HTMLRenderer from "../../components/common/HTMLRenderer";
 
@@ -26,16 +24,16 @@ export async function getStaticProps({ locale, params }: GetStaticPropsContext) 
     props: {
       content: {
         ...await page.data(),
-        title: content_page.title,
-        hero_heading: content_page.hero_heading,
-        hero_description: content_page.hero_description,
-        hero_image: content_page.hero_image
+        title: content_page.title || "",
+        hero_heading: content_page.hero_heading || "",
+        hero_description: content_page.hero_description || "",
+        hero_image: content_page.hero_image || ""
       },
       page: {
         content: content_page.content
       },
     },
-    revalidate: 10,
+    revalidate: REVALIDATE_BUILD_TIME,
   };
 }
 

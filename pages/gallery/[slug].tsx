@@ -3,7 +3,7 @@ import Page from "../../models/Page";
 import { useRouter } from "next/router";
 import ImageSection from "../../components/sections/gallery/ImageSection";
 import MainLayout from "../../components/layouts/MainLayout";
-import {DEFAULT_LOCALE} from "../../utils/constants";
+import {DEFAULT_LOCALE, REVALIDATE_BUILD_TIME} from "../../utils/constants";
 
 
 const Gallery: NextPage = ({ content, galleryDetails }: any) => {
@@ -41,6 +41,7 @@ export async function getStaticProps({ locale, params }: GetStaticPropsContext) 
         images
       },
     },
+    revalidate: REVALIDATE_BUILD_TIME,
   };
 }
 
@@ -53,6 +54,6 @@ export async function getStaticPaths() {
   }
   return {
     paths,
-    fallback: false,
+    fallback: 'blocking',
   }
 }

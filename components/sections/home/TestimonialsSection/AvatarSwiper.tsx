@@ -37,7 +37,6 @@ export default function AvatarSwiper({ data, setReview }: any) {
         onSlideChange={(swiper) => {
           setReview(data[swiper.realIndex]);
         }}
-        onSwiper={(swiper) => console.log("swiperoo", swiper)}
         style={{ overflow: "visible !important" }}
       >
         {data?.map((item: any, index: number) => (

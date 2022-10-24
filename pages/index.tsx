@@ -6,7 +6,7 @@ import MembersSection from "../components/sections/home/MembersSection";
 import NewsSection from "../components/sections/home/NewsSection";
 import TestimonialsSection from "../components/sections/home/TestimonialsSection";
 import { asset } from "../utils/functions";
-import {DEFAULT_LOCALE} from "../utils/constants";
+import {DEFAULT_LOCALE, REVALIDATE_BUILD_TIME} from "../utils/constants";
 
 const Home: NextPage = ({
   content,
@@ -59,6 +59,7 @@ export async function getStaticProps({locale}: GetStaticPropsContext) {
       news,
       testimonials,
     },
+    revalidate: REVALIDATE_BUILD_TIME,
   }
 }
 

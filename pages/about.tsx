@@ -2,7 +2,7 @@ import type { GetStaticPropsContext, NextPage } from "next";
 import { asset } from "../utils/functions";
 import Page from "../models/Page";
 import SpecialCard from "../components/sections/common/SpecialCard";
-import {DEFAULT_LOCALE} from "../utils/constants";
+import {DEFAULT_LOCALE, REVALIDATE_BUILD_TIME} from "../utils/constants";
 import GoalsSection from "../components/sections/about/GoalsSection";
 import MainLayout from "../components/layouts/MainLayout";
 import AdminsSection from "../components/sections/about/AdminsSection";
@@ -50,6 +50,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
       committee_members,
       goals_and_objectives
     },
+    revalidate: REVALIDATE_BUILD_TIME,
   };
 }
 

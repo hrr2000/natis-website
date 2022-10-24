@@ -2,7 +2,7 @@ import type { GetStaticPropsContext, NextPage } from "next";
 import {asset, dd} from "../utils/functions";
 import Page from "../models/Page";
 import SpecialCard from "../components/sections/common/SpecialCard";
-import {DEFAULT_LOCALE} from "../utils/constants";
+import {DEFAULT_LOCALE, REVALIDATE_BUILD_TIME} from "../utils/constants";
 import MainLayout from "../components/layouts/MainLayout";
 
 const InstituteCampus: NextPage = ({ content }: any) => {
@@ -47,6 +47,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
     props: {
       content: await page.data(),
     },
+    revalidate: REVALIDATE_BUILD_TIME,
   };
 }
 

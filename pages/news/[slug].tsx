@@ -1,7 +1,7 @@
 import type {GetStaticPropsContext, NextPage} from "next";
 import Page from "../../models/Page";
 import MainLayout from "../../components/layouts/MainLayout";
-import {DEFAULT_LOCALE} from "../../utils/constants";
+import {DEFAULT_LOCALE, REVALIDATE_BUILD_TIME} from "../../utils/constants";
 import HTMLRenderer from "../../components/common/HTMLRenderer";
 import SectionWrapper from "../../components/sections/common/SectionWrapper";
 
@@ -34,6 +34,7 @@ export async function getStaticProps({ locale, params }: GetStaticPropsContext) 
         ...newsItem,
       },
     },
+    revalidate: REVALIDATE_BUILD_TIME,
   };
 }
 
@@ -46,7 +47,7 @@ export async function getStaticPaths() {
   }
   return {
     paths,
-    fallback: false,
+    fallback: 'blocking',
   }
 }
 

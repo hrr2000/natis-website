@@ -2,7 +2,7 @@ import type { GetStaticPropsContext, NextPage } from "next";
 import Page from "../models/Page";
 
 import ApplicationSection from "../components/sections/apply/ApplicationSection";
-import { DEFAULT_LOCALE } from "../utils/constants";
+import {DEFAULT_LOCALE, REVALIDATE_BUILD_TIME} from "../utils/constants";
 import MainLayout from "../components/layouts/MainLayout";
 
 const Apply: NextPage = ({ content, labels }: any) => {
@@ -38,6 +38,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
       content,
       labels,
     },
+    revalidate: REVALIDATE_BUILD_TIME,
   };
 }
 

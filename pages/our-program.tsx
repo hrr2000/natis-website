@@ -1,7 +1,7 @@
 import type { GetStaticPropsContext, NextPage } from "next";
 import {asset, dd, GRK} from "../utils/functions";
 import Page from "../models/Page";
-import {DEFAULT_LOCALE} from "../utils/constants";
+import {DEFAULT_LOCALE, REVALIDATE_BUILD_TIME} from "../utils/constants";
 import MainLayout from "../components/layouts/MainLayout";
 import SectionWrapper from "../components/sections/common/SectionWrapper";
 import Video from "../components/sections/home/AboutSection/Video";
@@ -74,6 +74,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
     props: {
       content: await page.data(),
     },
+    revalidate: REVALIDATE_BUILD_TIME,
   };
 }
 

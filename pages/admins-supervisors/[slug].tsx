@@ -3,7 +3,7 @@ import Page from "../../models/Page";
 import MemberSection from "../../components/sections/member";
 import MainLayout from "../../components/layouts/MainLayout";
 import {asset, dd} from "../../utils/functions";
-import {DEFAULT_LOCALE} from "../../utils/constants";
+import {DEFAULT_LOCALE, REVALIDATE_BUILD_TIME} from "../../utils/constants";
 
 const AdminsSupervisorsItem: NextPage = ({
   content,
@@ -53,6 +53,7 @@ export async function getStaticProps({ locale, params }: GetStaticPropsContext) 
         adminStory: committee_member.about,
       },
     },
+    revalidate: REVALIDATE_BUILD_TIME,
   };
 }
 
@@ -65,7 +66,7 @@ export async function getStaticPaths() {
   }
   return {
     paths,
-    fallback: false,
+    fallback: 'blocking',
   }
 }
 
