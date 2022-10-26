@@ -20,9 +20,9 @@ export default class Page {
       ...(await this.get(this.name) || {}),
       common_data: (await this.get('common_data') || {}),
       navbar: (await this.get('navbar') || {}),
-      topbar: (await this.get('topbar') || {})
+      topbar: (await this.get('topbar') || {}),
+      footer: (await this.get('footer') || {})
     };
-    console.log(getBreadCrumbs(returnObject.navbar.links || []));
     return {
       ...returnObject,
       breadcrumbs: getBreadCrumbs(returnObject.navbar.links || [])

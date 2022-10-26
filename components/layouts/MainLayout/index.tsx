@@ -30,6 +30,7 @@ interface IMainLayout {
       links: ILink[];
       apply_button_text: string;
     };
+    footer: any;
   };
   children: ReactNode;
 }
@@ -74,6 +75,7 @@ export default function MainLayout({content, children}: IMainLayout) {
       />
       {children}
       <Footer
+        content={content.footer}
         about_natis={content.common_data.about_natis}
         natis_logo={content.common_data.natis_logo}
         natis_logo_dark={content.common_data.natis_logo_dark}
