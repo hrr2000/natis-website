@@ -7,6 +7,7 @@ import Footer from "../Footer";
 import HeroSection from "../../sections/HeroSection";
 import {asset, dd} from "../../../utils/functions";
 import Topbar from "../Topbar";
+import MobileNav from "../MobileNav";
 
 interface IMainLayout {
   content: {
@@ -65,6 +66,11 @@ export default function MainLayout({content, children}: IMainLayout) {
           cea_logo={content.common_data.cea_logo}
           links={content.navbar.links}
         />
+        {/*<MobileNav*/}
+        {/*  natis_logo={content.common_data.natis_logo}*/}
+        {/*  cea_logo={content.common_data.cea_logo}*/}
+        {/*  links={content.navbar.links}*/}
+        {/*/>*/}
       </div>
       <HeroSection
         backgroundImage={asset(content.hero_image)}

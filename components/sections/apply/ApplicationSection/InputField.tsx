@@ -13,7 +13,7 @@ const InputField = ({ name, id, required, ...props }: InputFields) => {
         {required && <span className=" text-red-600 mx-1">*</span>}
       </label>
       <input
-        className={`rounded-md  placeholder:text-placeholder capitalize border-3 focus:border-secondary focus:ring-secondary ${
+        className={`rounded-md  placeholder:text-placeholder border-3 focus:border-secondary focus:ring-secondary ${
           !(error && touched) ? "border-border" : "border-red-600"
         }`}
         {...props}

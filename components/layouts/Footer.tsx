@@ -2,7 +2,9 @@ import Image from "../common/Image";
 import {asset, GRK} from "../../utils/functions";
 import {ILink} from "../../Types/common";
 import Link from "next/link";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
+import LanguageButton from "../common/LanguagesButton";
+import {FaFacebookF, FaInstagram, FaLinkedin, FaTwitter} from "react-icons/fa";
 
 interface IFooter {
   natis_logo: string;
@@ -16,7 +18,7 @@ export default function Footer({natis_logo, natis_logo_dark, cea_logo_dark, abou
   return (
     <footer>
       <div className="bg-primary text-light">
-        <div className={`container mx-auto py-10 grid grid-cols-12 justify-items-center`}>
+          <div className={`container mx-auto py-10 flex flex-col md:flex-row flex-wrap justify-between lg:grid lg:grid-cols-12 justify-items-center`}>
           <div className={`col-span-3`}>
             <h4>{content.home_column_title}</h4>
             <ul className={`list-none p-0`}>
@@ -98,24 +100,48 @@ export default function Footer({natis_logo, natis_logo_dark, cea_logo_dark, abou
               ))}
             </ul>
           </div>
-          <div className={`col-span-3 text-center flex flex-col gap-5 items-center px-[32px] text-md font-medium`}>
-            <Image className={`relative w-[259.84px] h-[56.14px]`} src={asset(natis_logo)} />
-            <p>
+          <div className={`col-span-3 flex flex-col gap-5 text-md font-medium my-10 xl:my-0`}>
+            <Image className={`relative w-[259.84px] h-[56.14px]`} style={{
+              marginInlineStart: '-9px',
+            }} src={asset(natis_logo)} />
+            <p className={`text-left text-justify w-[259.84px]`}>
               {about_natis}
             </p>
           </div>
         </div>
       </div>
       <div className={`bg-secondary`}>
-        <div className="container mx-auto py-4 flex justify-between items-center text-white">
+        <div className="container mx-auto py-4 flex flex-wrap gap-5 justify-between items-center text-white">
           <div className={`flex h-full items-center gap-2`}>
             <Image className={`relative w-[163px] h-[38px]`} src={asset(natis_logo_dark)} />
             <Image className={`relative w-[75.49px] h-[26.26px]`} src={asset(cea_logo_dark)} />
           </div>
           <div>{content.copy_rights}</div>
           <div className={`flex h-full items-center gap-2`}>
-            <Image className={`relative w-[163px] h-[38px]`} src={asset(natis_logo_dark)} />
-            <Image className={`relative w-[75.49px] h-[26.26px]`} src={asset(cea_logo_dark)} />
+
+            <div className={`text-light flex py-5 gap-4 me-5`}>
+              <Link href={content.instagram || '/'}>
+                <a>
+                  <FaInstagram size={20} />
+                </a>
+              </Link>
+              <Link href={content.twitter || '/'}>
+                <a>
+                  <FaTwitter size={20} />
+                </a>
+              </Link>
+              <Link href={content.facebook || '/'}>
+                <a>
+                  <FaFacebookF size={20} />
+                </a>
+              </Link>
+              <Link href={content.linkedin || '/'}>
+                <a>
+                  <FaLinkedin size={20} />
+                </a>
+              </Link>
+            </div>
+            <LanguageButton className={`text-white py-2 duration-300 font-medium text-sm`} disabled />
           </div>
         </div>
       </div>

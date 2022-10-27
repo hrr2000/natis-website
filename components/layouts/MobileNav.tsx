@@ -11,10 +11,10 @@ interface INavbar {
   links: ILink[];
 }
 
-export default function Navbar({natis_logo, cea_logo, links}: INavbar) {
+export default function MobileNav({natis_logo, cea_logo, links}: INavbar) {
   const router = useRouter();
   return (
-    <div className={`bg-primary py-4 max-h-[65px]`}>
+    <div className={`bg-primary py-4 h-screen`}>
       <div className={`container mx-auto flex justify-between items-start`}>
         <div className={`flex h-full items-center gap-2 w-96 cursor-pointer`} onClick={() => router.replace('/')}>
           <Image className={`relative w-[163px] h-[38px]`} src={asset(natis_logo)} />
