@@ -41,6 +41,7 @@ export default function MainLayout({content, children}: IMainLayout) {
   const router = useRouter();
   const [isNavbarFixed, setIsNavbarFixed] = useState<boolean>(false);
   const [isScrollEventAdded, setIsScrollEventAdded] = useState<boolean>(false);
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState<boolean>(false);
 
   useEffect(() => {
     // console.log(router.pathname, content?.breadcrumbs);
@@ -65,12 +66,17 @@ export default function MainLayout({content, children}: IMainLayout) {
           natis_logo={content.common_data.natis_logo}
           cea_logo={content.common_data.cea_logo}
           links={content.navbar.links}
+          toggleMobileNav={() => setIsMobileNavOpen(state => !state)}
+          isMobileNavOpen={isMobileNavOpen}
         />
-        {/*<MobileNav*/}
-        {/*  natis_logo={content.common_data.natis_logo}*/}
-        {/*  cea_logo={content.common_data.cea_logo}*/}
-        {/*  links={content.navbar.links}*/}
-        {/*/>*/}
+        {isMobileNavOpen && (
+          <MobileNav
+            natis_logo={content.common_data.natis_logo}
+            cea_logo={content.common_data.cea_logo}
+            links={content.navbar.links}
+            topbar={content.topbar}
+          />
+        )}
       </div>
       <HeroSection
         backgroundImage={asset(content.hero_image)}

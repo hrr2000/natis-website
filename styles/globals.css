@@ -66,6 +66,10 @@ ul {
   all: revert;
 }
 
+.mob-nav--height {
+  height: calc(100vh - 170px);
+}
+
 section.swiper-container {
   background-color: cadetblue;
   display: flex;

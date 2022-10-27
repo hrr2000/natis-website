@@ -29,15 +29,29 @@ for(const locale in languages) {
   });
 }
 
-export default function LanguageButton({className, disabled}: any) {
+export default function LanguageButton({className, disabled, clickable, absolute}: any) {
   const router = useRouter();
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
   const [language, setLanguage] = useState<string>(router.locale || DEFAULT_LOCALE);
   return (
     <span
       className={`h-min relative`}
-      onMouseOver={() => setIsCollapsed(false)}
-      onMouseLeave={() => setIsCollapsed(true)}
+      onClick={(e) => {
+        if(!clickable || !isCollapsed) return;
+        e.stopPropagation();
+        setIsCollapsed(false);
+        window.addEventListener('click', () => {
+          setIsCollapsed(true);
+        });
+      }}
+      onMouseOver={() => {
+        if(clickable) return;
+        setIsCollapsed(false)
+      }}
+      onMouseLeave={() => {
+        if(clickable) return;
+        setIsCollapsed(true)
+      }}
     >
         <span className={`flex items-center gap-2 w-max cursor-pointer  ${className || ""}`}>
           <span>
@@ -60,7 +74,7 @@ export default function LanguageButton({className, disabled}: any) {
         <div
           className={
             `bg-white font-medium text-gray-400 duration-100 overflow-hidden flex flex-col
-             ${isCollapsed ? 'h-0 p-0 px-0 w-0 min-w-0' : 'absolute py-2 px-4 min-w-full'}`
+             ${isCollapsed ? 'h-0 p-0 px-0 w-0 min-w-0' : (absolute ? 'absolute py-2 px-4 min-w-full' : 'py-2 px-2 min-w-full')}`
           }
         >
           {links?.map((link: any) => {

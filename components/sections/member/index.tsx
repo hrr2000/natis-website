@@ -11,7 +11,7 @@ export default function MemberSection({
 }: AdminDetails) {
   return (
     <SectionWrapper>
-      <div className="grid grid-cols-12 lg:flex-row gap-10 px-7 py-12">
+      <div className="lg:grid lg:grid-cols-12 lg:flex-row gap-10 lg:px-7 py-12">
         <AdminDetailsCard
           adminName={adminName}
           adminRole={adminRole}
