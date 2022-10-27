@@ -13,9 +13,6 @@ interface IFooter {
 }
 
 export default function Footer({natis_logo, natis_logo_dark, cea_logo_dark, about_natis, content}: IFooter) {
-  useEffect(() => {
-    console.log(content)
-  })
   return (
     <footer>
       <div className="bg-primary text-light">

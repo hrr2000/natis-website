@@ -26,7 +26,7 @@ const InstituteCampus: NextPage = ({ content }: any) => {
         <br />
         <p>{content.program_description}</p>
         <br />
-        <HTMLRenderer className={`test-center`} content={content.program_table} />
+        <HTMLRenderer className={`test-center blog-content`} content={content.program_table} />
       </SectionWrapper>
       <div className={`w-full text-white text-center flex flex-col items-center gap-10 my-5 relative`}>
         <Image objectFit={`cover`} src={asset(content.advertisement_image)} />

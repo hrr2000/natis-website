@@ -90,6 +90,16 @@ div.swiper-slide {
   @apply text-blue-500 underline
 }
 
+.blog-content ol {
+  list-style: decimal;
+  margin-left: 25px;
+}
+
+.blog-content td {
+  border-width: 1px !important;
+  border-style: solid !important;
+}
+
 .accordion__title {
   background-color: white;
   color: rgb(77, 77, 77);
