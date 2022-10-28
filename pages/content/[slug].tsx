@@ -8,7 +8,7 @@ import HTMLRenderer from "../../components/common/HTMLRenderer";
 const AdminsSupervisorsItem: NextPage = ({content, page}: any) => {
   return (
     <MainLayout content={content}>
-      <SectionWrapper className={`page-content min-h-[50vh] blog-content`}>
+      <SectionWrapper className={`page-content blog-content`}>
         <HTMLRenderer content={page.content} />
       </SectionWrapper>
     </MainLayout>

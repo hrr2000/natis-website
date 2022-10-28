@@ -11,7 +11,7 @@ interface IGoalsCard {
 
 export default function GoalsCard({icon, title, description, image}: IGoalsCard) {
   return (
-    <article className={`mx-3 col-span-2 min-h-[273px] w-[250px] bg-primary rounded-lg overflow-hidden my-10`}>
+    <article className={`mx-3 col-span-2 min-h-[273px] sm:w-[250px] w-[90%] bg-primary rounded-lg overflow-hidden my-10`}>
       <div className={`relative min-h-[200px]`}>
         <Image src={image} objectFit={`cover`}/>
         <Overlay color={'bg-primary'} />

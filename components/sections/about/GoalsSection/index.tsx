@@ -17,7 +17,7 @@ export default function GoalsSection({title, description, items}: IGoalsSection)
   return (
     <SectionWrapper>
       <header className={`text-center`}>
-        <h2 className={`text-secondary text-6xl pb-5`}>
+        <h2 className={`text-secondary text-4xl lg:text-6xl pb-5`}>
           {title}
         </h2>
         <p className={`max-w-[500px] mx-auto`}>

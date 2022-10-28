@@ -17,7 +17,7 @@ export default function Topbar({links, apply_button_text}: ITopebar) {
             return <span key={GRK('nav_link')} className={`block`}><Link absolute className={`text-primary uppercase opacity-50 py-2 hover:text-secondary duration-300 font-medium text-sm`} key={GRK('nav_link')} link={link}/></span>
           })}
         </nav>
-        <div className={`w-full`}>
+        <div className={`w-max`}>
           <Link
             link={{url: '/apply', text: apply_button_text}}
             className="bg-secondary uppercase w-full md:w-max px-4 py-[.5rem] text-sm rounded-md text-white font-semibold duration-300 hover:opacity-70" />

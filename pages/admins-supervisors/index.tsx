@@ -3,11 +3,12 @@ import Page from "../../models/Page";
 import MembersSection from "../../components/sections/home/MembersSection";
 import MainLayout from "../../components/layouts/MainLayout";
 import {DEFAULT_LOCALE, REVALIDATE_BUILD_TIME} from "../../utils/constants";
+import {CommitteeMember} from "../../Types/directus";
 
 const AdminsSupervisors: NextPage = ({ content, committee_members }: any) => {
   return (
     <MainLayout content={content}>
-      <MembersSection members={committee_members} />
+      <MembersSection members={committee_members.sort((member1: CommitteeMember, member2: CommitteeMember) => member1.rank - member2.rank)} />
     </MainLayout>
   );
 };

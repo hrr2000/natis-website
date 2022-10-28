@@ -62,7 +62,7 @@ export default function ImageSection({
               modules={[Navigation, Pagination]}
               slidesPerView={1}
               navigation
-              className="flex rounded-md h-[800px] w-full"
+              className="flex rounded-md h-[70vh] w-full"
               initialSlide={modal.pressedIndex}
             >
               {urls?.map((url) => (

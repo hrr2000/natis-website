@@ -5,6 +5,8 @@ import Link from "next/link";
 import React, {useEffect, useState} from "react";
 import LanguageButton from "../common/LanguagesButton";
 import {FaFacebookF, FaInstagram, FaLinkedin, FaTwitter} from "react-icons/fa";
+import {CEA_URL} from "../../utils/constants";
+import {useRouter} from "next/router";
 
 interface IFooter {
   natis_logo: string;
@@ -15,6 +17,9 @@ interface IFooter {
 }
 
 export default function Footer({natis_logo, natis_logo_dark, cea_logo_dark, about_natis, content}: IFooter) {
+
+  const router = useRouter();
+
   return (
     <footer>
       <div className="bg-primary text-light">
@@ -100,7 +105,7 @@ export default function Footer({natis_logo, natis_logo_dark, cea_logo_dark, abou
               ))}
             </ul>
           </div>
-          <div className={`col-span-3 flex flex-col gap-5 text-md font-medium my-10 xl:my-0`}>
+          <div className={`col-span-3 flex-col gap-5 text-md font-medium hidden lg:flex`}>
             <Image className={`relative w-[259.84px] h-[56.14px]`} style={{
               marginInlineStart: '-9px',
             }} src={asset(natis_logo)} />
@@ -111,10 +116,10 @@ export default function Footer({natis_logo, natis_logo_dark, cea_logo_dark, abou
         </div>
       </div>
       <div className={`bg-secondary`}>
-        <div className="container mx-auto py-4 flex flex-wrap gap-5 justify-between items-center text-white">
-          <div className={`flex h-full items-center gap-2`}>
-            <Image className={`relative w-[163px] h-[38px]`} src={asset(natis_logo_dark)} />
-            <Image className={`relative w-[75.49px] h-[26.26px]`} src={asset(cea_logo_dark)} />
+        <div className="container mx-auto flex pt-4 lg:pt-0 lg:gap-5 justify-center flex-col lg:flex-row lg:justify-between items-center text-white">
+          <div className={`h-full items-center gap-2 hidden lg:flex`}>
+            <Image className={`relative w-[163px] h-[38px] cursor-pointer`} src={asset(natis_logo_dark)} onClick={() => router.replace('/')} />
+            <Image className={`relative w-[75.49px] h-[26.26px] cursor-pointer`} src={asset(cea_logo_dark)} onClick={() => router.replace(CEA_URL)} />
           </div>
           <div>{content.copy_rights}</div>
           <div className={`flex h-full items-center gap-2`}>

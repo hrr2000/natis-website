@@ -5,6 +5,7 @@ import Link from "../common/Link";
 import {useRouter} from "next/router";
 import LanguageButton from "../common/LanguagesButton";
 import {AiOutlineClose, AiOutlineMenu} from "react-icons/ai";
+import {CEA_URL} from "../../utils/constants";
 
 interface INavbar {
   natis_logo: string;
@@ -19,9 +20,9 @@ export default function Navbar({natis_logo, cea_logo, links, toggleMobileNav, is
   return (
     <div className={`bg-primary py-4 max-h-[65px] shadow-lg shadow-[rgba(0,0,0,0.2)]`}>
       <div className={`container mx-auto flex justify-between items-center xl:items-start`}>
-        <div className={`flex h-full items-center gap-2 w-96 cursor-pointer`} onClick={() => router.replace('/')}>
-          <Image className={`relative w-[163px] h-[38px]`} src={asset(natis_logo)} />
-          <Image className={`relative w-[75.49px] h-[26.26px]`} src={asset(cea_logo)} />
+        <div className={`flex h-full items-center gap-2 w-96 cursor-pointer`}>
+          <Image className={`relative w-[163px] h-[38px]`} src={asset(natis_logo)} onClick={() => router.replace('/')} />
+          <Image className={`relative w-[75.49px] h-[26.26px]`} src={asset(cea_logo)} onClick={() => router.replace(CEA_URL)} />
         </div>
         <button className={`text-white h-full flex items-center xl:hidden`} onClick={() => toggleMobileNav()}>
           {!isMobileNavOpen ? (

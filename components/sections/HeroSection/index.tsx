@@ -38,7 +38,7 @@ export default function HeroSection(content: IHeroSection) {
             <IoIosArrowForward />
             {breadcrumbs.map((breadcrumb, idx) => (
               <React.Fragment key={GRK('breadcrumb')}>
-                <span className={`text-sm`} style={{color: '#E6DE00'}}>
+                <span className={`text-xs md:text-sm w-max`} style={{color: '#E6DE00'}}>
                   {breadcrumb}
                 </span>
                 {idx + 1 != breadcrumbs.length && <IoIosArrowForward />}

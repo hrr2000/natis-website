@@ -12,7 +12,7 @@ const Modal = ({
   return (
     <>
       {!!modalState && (
-        <div className="bg-overlay fixed inset-0 flex justify-center items-center">
+        <div className="bg-overlay fixed inset-0 flex justify-center items-center z-50">
           <div ref={modalRef} className="w-dynamic-md bg-white rounded-md">
             {children(modalState)}
           </div>

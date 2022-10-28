@@ -73,7 +73,7 @@ export default function LanguageButton({className, disabled, clickable, absolute
       {!!links.length && !disabled && (
         <div
           className={
-            `bg-white font-medium text-gray-400 duration-100 overflow-hidden flex flex-col
+            `bg-primary lg:bg-white font-medium text-gray-400 duration-100 overflow-hidden flex flex-col
              ${isCollapsed ? 'h-0 p-0 px-0 w-0 min-w-0' : (absolute ? 'absolute py-2 px-4 min-w-full' : 'py-2 px-2 min-w-full')}`
           }
         >

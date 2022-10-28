@@ -8,7 +8,7 @@ import SectionWrapper from "../../components/sections/common/SectionWrapper";
 const NewsItem: NextPage = ({ content, newsItemDetails }: any) => {
   return (
     <MainLayout content={content}>
-        <SectionWrapper className={`min-h-[50vh] blog-content`}>
+        <SectionWrapper className={`blog-content`}>
           <HTMLRenderer content={newsItemDetails.content} />
         </SectionWrapper>
     </MainLayout>
