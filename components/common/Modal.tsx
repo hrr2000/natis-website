@@ -9,7 +9,7 @@ const Modal = ({
   children: (x: number) => React.ReactNode;
   modalState: number;
   modalRef?: any;
-  className: string;
+  className?: string;
 }) => {
   return (
     <>
