@@ -42,6 +42,7 @@ export default function MainLayout({content, children}: IMainLayout) {
   const [isNavbarFixed, setIsNavbarFixed] = useState<boolean>(false);
   const [isScrollEventAdded, setIsScrollEventAdded] = useState<boolean>(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState<boolean>(false);
+  const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
 
   useEffect(() => {
     // console.log(router.pathname, content?.breadcrumbs);
@@ -61,6 +62,10 @@ export default function MainLayout({content, children}: IMainLayout) {
         <Topbar
           links={content.topbar.links}
           apply_button_text={content.topbar.apply_button_text}
+          searchState={{
+            state: isSearchOpen,
+            setState: setIsSearchOpen
+          }}
         />
         <Navbar
           natis_logo={content.common_data.natis_logo}
@@ -68,13 +73,22 @@ export default function MainLayout({content, children}: IMainLayout) {
           links={content.navbar.links}
           toggleMobileNav={() => setIsMobileNavOpen(state => !state)}
           isMobileNavOpen={isMobileNavOpen}
+          searchState={{
+            state: isSearchOpen,
+            setState: setIsSearchOpen
+          }}
         />
         {isMobileNavOpen && (
           <MobileNav
             natis_logo={content.common_data.natis_logo}
             cea_logo={content.common_data.cea_logo}
             links={content.navbar.links}
-            topbar={content.topbar}
+            topbar={{
+              ...content.topbar,
+              searchState: {
+                state: isSearchOpen,
+                setState: setIsSearchOpen
+            }}}
           />
         )}
       </div>
