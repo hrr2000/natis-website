@@ -6,7 +6,9 @@ import {Article, CommitteeMember, ContentPage} from "../../Types/directus";
 
 
 type Data = {
-  name: string
+  committeeMembers: CommitteeMember[],
+  news: Article[],
+  contentPages: ContentPage[]
 }
 
 export default async function handler(
@@ -49,8 +51,6 @@ export default async function handler(
     contentPages
   }
 
-  // @ts-ignore
   return res.status(200).json(result);
-
 }
 

@@ -8,6 +8,8 @@ import HeroSection from "../../sections/HeroSection";
 import {asset, dd} from "../../../utils/functions";
 import Topbar from "../Topbar";
 import MobileNav from "../MobileNav";
+import {AiOutlineArrowUp} from "react-icons/ai";
+import Link from "next/link";
 
 interface IMainLayout {
   content: {
@@ -66,6 +68,8 @@ export default function MainLayout({content, children}: IMainLayout) {
             state: isSearchOpen,
             setState: setIsSearchOpen
           }}
+          emailList={content.footer.email_list}
+          phoneList={content.footer.phone_list}
         />
         <Navbar
           natis_logo={content.common_data.natis_logo}
@@ -107,6 +111,9 @@ export default function MainLayout({content, children}: IMainLayout) {
         natis_logo_dark={content.common_data.natis_logo_dark}
         cea_logo_dark={content.common_data.cea_logo_dark}
       />
+      <a href={'#'} className={`bg-secondary text-white p-4 rounded-xl hover:opacity-75 fixed right-10 duration-200 ${isNavbarFixed ? 'bottom-10' : '-bottom-96'}`}>
+          <AiOutlineArrowUp size={25} />
+      </a>
     </main>
   )
 }

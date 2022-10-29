@@ -2,6 +2,8 @@ import {asset, GRK} from "../../utils/functions";
 import {ILink} from "../../Types/common";
 import Link from "../common/Link";
 import {AiOutlineClose, AiOutlineSearch} from "react-icons/ai";
+import {BsEnvelopeFill} from 'react-icons/bs';
+import {MdPhoneInTalk} from 'react-icons/md';
 import {useEffect, useState} from "react";
 import Modal from "../common/Modal";
 import {useRouter} from "next/router";
@@ -13,10 +15,12 @@ export interface ITopebar {
   searchState: {
     state: boolean;
     setState: Function;
-  }
+  },
+  emailList?: ILink[],
+  phoneList?: ILink[]
 }
 
-export default function Topbar({links, apply_button_text, searchState}: ITopebar) {
+export default function Topbar({links, apply_button_text, searchState, emailList, phoneList}: ITopebar) {
   const [isSearchBoxOpen, setIsSearchBoxOpen] = useState<number>(0);
   const [searchResult, setSearchResult] = useState<any>({});
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -38,13 +42,28 @@ export default function Topbar({links, apply_button_text, searchState}: ITopebar
             return <span key={GRK('nav_link')} className={`block`}><Link absolute className={`text-primary uppercase opacity-50 py-2 hover:text-secondary duration-300 font-medium text-sm`} key={GRK('nav_link')} link={link}/></span>
           })}
         </nav>
-        <div className={`w-max`}>
-          <Link
-            link={{url: '/apply', text: apply_button_text}}
-            className="bg-secondary uppercase w-full md:w-max px-4 py-[.5rem] text-sm rounded-md text-white font-semibold duration-300 hover:opacity-70" />
+        <div className={`flex gap-5 items-start relative z-[99] w-full justify-between md:justify-end`}>
+          <span className={`gap-2 items-center mt-2 md:flex hidden`}>
+            <span className={`text-secondary`} >
+              <BsEnvelopeFill size={18} />
+            </span>
+            <span className={``}>
+              {emailList?.[0].text}
+            </span>
+          </span>
+          <Link className={`mt-2`} link={{text: phoneList?.[0].text || '', url: '#', items: phoneList}} clickable icon={() => (
+            <span className={`text-secondary me-2`} >
+              <MdPhoneInTalk size={20} />
+            </span>
+          )}/>
+          <div className={`w-max`}>
+            <Link
+              link={{url: '/apply', text: apply_button_text}}
+              className="bg-secondary uppercase w-full md:w-max px-4 py-[.5rem] text-sm rounded-md text-white font-semibold duration-300 hover:opacity-70" />
+          </div>
         </div>
       </div>
-      <div className={`absolute duration-200 ${!searchState.state ? '-top-[200px]' : 'top-0'} bg-[#D6D8DF] w-full h-full z-50 flex justify-center items-center`}>
+      <div className={`absolute duration-200 ${!searchState.state ? '-top-[200px]' : 'top-0'} bg-[#D6D8DF] w-full h-full z-[100] flex justify-center items-center`}>
         <div className={`container flex justify-center items-center gap-5`}>
           <button onClick={() => searchState.setState(false)}>
             <AiOutlineClose size={25} />
@@ -70,12 +89,12 @@ export default function Topbar({links, apply_button_text, searchState}: ITopebar
             </span>
           </button>
         </div>
-        <Modal modalState={isSearchBoxOpen}>
+        <Modal modalState={isSearchBoxOpen} className={`w-full md:w-dynamic-md bg-white rounded-md`}>
           {() => {
             return (
               <div className={`relative`}>
                 <AiOutlineClose className={`absolute right-5 top-5 cursor-pointer`} size={25} onClick={() => setIsSearchBoxOpen(0)} />
-                <div className={`bg-gray-100 w-full p-10 overflow-y-auto h-[500px] rounded-xl shadow-lg`}>
+                <div className={`bg-gray-100 w-full p-5 md:p-10 overflow-y-auto h-[500px] rounded-xl shadow-lg`}>
                   {searchResult.news.length > 0 && (
                     <h3>
                       {router.locale === 'ar-SA' ? 'الآخبار' : 'News'}

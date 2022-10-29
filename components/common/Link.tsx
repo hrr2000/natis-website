@@ -4,7 +4,7 @@ import {ILink} from "../../Types/common";
 import {useState} from "react";
 import {GRK} from "../../utils/functions";
 
-export default function Link({link, children, className, absolute, clickable, ...props}: any) {
+export default function Link({link, children, className, absolute, clickable, icon, ...props}: any) {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
   return (
     <>
@@ -21,6 +21,7 @@ export default function Link({link, children, className, absolute, clickable, ..
             }}
           >
             <span {...props} className={`flex items-center w-max cursor-pointer ${className || ""}`}>
+              {icon?.()}
               {link?.text || ""}  {children}
               {!!link?.items?.length && (
                 <span className={`ms-2`}>
