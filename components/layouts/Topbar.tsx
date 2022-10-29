@@ -70,72 +70,74 @@ export default function Topbar({links, apply_button_text, searchState}: ITopebar
             </span>
           </button>
         </div>
-        <Modal modalState={isSearchBoxOpen} children={() => {
-          return (
-            <div className={`relative`}>
-              <AiOutlineClose className={`absolute right-5 top-5 cursor-pointer`} size={25} onClick={() => setIsSearchBoxOpen(0)} />
-              <div className={`bg-gray-100 w-full p-10 overflow-y-auto h-[500px] rounded-xl shadow-lg`}>
-                {searchResult.news.length > 0 && (
-                  <h3>
-                    {router.locale === 'ar-SA' ? 'الآخبار' : 'News'}
-                  </h3>
-                )}
-                <ul>
-                  {searchResult?.news?.slice(-10).map((item: any) => {
-                    return (
-                      <li key={GRK('news')}>
-                        <Link onClick={() => {
-                          setIsSearchBoxOpen(0);
-                        }} link={{url: `/news/${item?.slug}`, text: item?.title}} className={`block text-primary hover:text-secondary duration-300`}/>
-                        <p>
-                          {item.short_description}
-                        </p>
-                      </li>
-                    )
-                  })}
-                </ul>
-                {searchResult.committeeMembers.length > 0 && (
-                  <h3>
-                    {router.locale === 'ar-SA' ? 'الأعضاء' : 'Members'}
-                  </h3>
-                )}
-                <ul>
-                  {searchResult?.committeeMembers?.slice(-10).map((item: any) => {
-                    return (
-                      <li key={GRK('member')}>
-                        <Link onClick={() => {
-                          setIsSearchBoxOpen(0);
-                        }} link={{url: `/admins-supervisors/${item?.slug}`, text: item?.name}} className={`block text-primary hover:text-secondary duration-300`}/>
-                        <p>
-                          {item.role}
-                        </p>
-                      </li>
-                    )
-                  })}
-                </ul>
-                {searchResult.contentPages.length > 0 && (
-                  <h3>
-                    {router.locale === 'ar-SA' ? 'الصفحات' : 'Pages'}
-                  </h3>
-                )}
-                <ul>
-                  {searchResult?.contentPages?.slice(-10).map((item: any) => {
-                    return (
-                      <li key={GRK('content_page')}>
-                        <Link onClick={() => {
-                          setIsSearchBoxOpen(0);
-                        }} link={{url: `/content/${item?.slug}`, text: item?.title}} className={`block text-primary hover:text-secondary duration-300`}/>
-                        <p>
-                          {item.hero_description}
-                        </p>
-                      </li>
-                    )
-                  })}
-                </ul>
+        <Modal modalState={isSearchBoxOpen}>
+          {() => {
+            return (
+              <div className={`relative`}>
+                <AiOutlineClose className={`absolute right-5 top-5 cursor-pointer`} size={25} onClick={() => setIsSearchBoxOpen(0)} />
+                <div className={`bg-gray-100 w-full p-10 overflow-y-auto h-[500px] rounded-xl shadow-lg`}>
+                  {searchResult.news.length > 0 && (
+                    <h3>
+                      {router.locale === 'ar-SA' ? 'الآخبار' : 'News'}
+                    </h3>
+                  )}
+                  <ul>
+                    {searchResult?.news?.slice(-10).map((item: any) => {
+                      return (
+                        <li key={GRK('news')}>
+                          <Link onClick={() => {
+                            setIsSearchBoxOpen(0);
+                          }} link={{url: `/news/${item?.slug}`, text: item?.title}} className={`block text-primary hover:text-secondary duration-300`}/>
+                          <p>
+                            {item.short_description}
+                          </p>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                  {searchResult.committeeMembers.length > 0 && (
+                    <h3>
+                      {router.locale === 'ar-SA' ? 'الأعضاء' : 'Members'}
+                    </h3>
+                  )}
+                  <ul>
+                    {searchResult?.committeeMembers?.slice(-10).map((item: any) => {
+                      return (
+                        <li key={GRK('member')}>
+                          <Link onClick={() => {
+                            setIsSearchBoxOpen(0);
+                          }} link={{url: `/admins-supervisors/${item?.slug}`, text: item?.name}} className={`block text-primary hover:text-secondary duration-300`}/>
+                          <p>
+                            {item.role}
+                          </p>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                  {searchResult.contentPages.length > 0 && (
+                    <h3>
+                      {router.locale === 'ar-SA' ? 'الصفحات' : 'Pages'}
+                    </h3>
+                  )}
+                  <ul>
+                    {searchResult?.contentPages?.slice(-10).map((item: any) => {
+                      return (
+                        <li key={GRK('content_page')}>
+                          <Link onClick={() => {
+                            setIsSearchBoxOpen(0);
+                          }} link={{url: `/content/${item?.slug}`, text: item?.title}} className={`block text-primary hover:text-secondary duration-300`}/>
+                          <p>
+                            {item.hero_description}
+                          </p>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </div>
               </div>
-            </div>
-          )
-        }} />
+            )
+          }}
+      </Modal>
       </div>
     </div>
   )
