@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["localhost", "images.unsplash.com", "54.211.128.158"],
+    domains: ["localhost", "images.unsplash.com", "18.206.94.254", "nati-esl-usa.org"],
   },
   i18n: {
     // locales: ['en-US'],
