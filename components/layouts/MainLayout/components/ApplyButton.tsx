@@ -1,6 +1,6 @@
 import Link from "../../../common/Link";
 
-export default function ({text}: {text: string}) {
+export default function ApplyButton({text}: {text: string}) {
   return (
     <div className={`w-max`}>
       <Link

@@ -1,7 +1,7 @@
 import {BsEnvelopeFill} from "react-icons/bs";
 import {ILink} from "../../../../Types/common";
 
-export default function({list}: {list: ILink[]}) {
+export default function EmailList({list}: {list: ILink[]}) {
   return (
     <span className={`gap-2 items-center mt-2 md:flex hidden`}>
       <span className={`text-secondary`} >
