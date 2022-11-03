@@ -60,7 +60,9 @@ export default function Topbar({links, apply_button_text, searchState, emailList
           <button onClick={() => searchState.setState(false)}>
             <AiOutlineClose size={25} />
           </button>
-          <input type="text"
+          <label htmlFor="search-input"></label>
+          <input id="search-input"
+                 type="text"
                  className={`bg-transparent border-0 border-b-2 h-5 w-full text-xl`}
                  onChange={(event) => {
                    setQuery(event?.target?.value || '');

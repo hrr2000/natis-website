@@ -28,11 +28,11 @@ const About: NextPage = ({ content, goals_and_objectives, committee_members }: a
         description={content.goals_section_description}
         items={goals_and_objectives || []}
       />
-      <AdminsSection
-        title={content.admins_section_title}
-        description={content.admins_section_description}
-        items={committee_members || []}
-      />
+      {/*<AdminsSection*/}
+      {/*  title={content.admins_section_title}*/}
+      {/*  description={content.admins_section_description}*/}
+      {/*  items={committee_members || []}*/}
+      {/*/>*/}
     </MainLayout>
   );
 };

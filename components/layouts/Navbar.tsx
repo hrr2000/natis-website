@@ -26,19 +26,19 @@ export default function Navbar({natis_logo, cea_logo, links, toggleMobileNav, is
       <div className={`container mx-auto flex gap-8 justify-between items-center xl:items-start`}>
         <div className={`flex h-full items-center gap-2 w-96 cursor-pointer`}>
           <Image
-            className={`relative w-[120px] h-[27.98px] sm:w-[163px] sm:h-[38px]`}
+            className={`relative w-[120px] h-[27.98px] sm:w-[163px] sm:h-[38px] hover:opacity-70 duration-300`}
             src={asset(natis_logo)}
             onClick={() => router.replace('/')} />
           <Image
-            className={`relative w-[60px] h-[20.87px] sm:w-[75.49px] sm:h-[26.26px]`}
+            className={`relative w-[60px] h-[20.87px] sm:w-[75.49px] sm:h-[26.26px] hover:opacity-70 duration-300`}
             src={asset(cea_logo)}
             onClick={() => router.replace(CEA_URL)} />
         </div>
         <div className={`flex items-center gap-4`}>
-          <button className={`text-white flex  xl:hidden`} onClick={() => searchState?.setState(true)}>
+          <button className={`text-white flex  xl:hidden`} aria-label="search" onClick={() => searchState?.setState(true)}>
             <AiOutlineSearch size={19} />
           </button>
-          <button className={`text-white h-full flex items-center xl:hidden`} onClick={() => toggleMobileNav()}>
+          <button className={`text-white h-full flex items-center xl:hidden`} aria-label="show menu" onClick={() => toggleMobileNav()}>
             {!isMobileNavOpen ? (
               <AiOutlineMenu size={25} />
             ) : (
@@ -47,7 +47,7 @@ export default function Navbar({natis_logo, cea_logo, links, toggleMobileNav, is
           </button>
         </div>
         <nav className="flex overflow-visible relative z-50 gap-6 hidden xl:flex">
-          <button className={`text-white flex mt-2`} style={{
+          <button aria-label="search for results" className={`text-white flex mt-2`} style={{
             marginInlineEnd: '-10px',
           }} onClick={() => searchState?.setState(true)}>
             <AiOutlineSearch size={19} />

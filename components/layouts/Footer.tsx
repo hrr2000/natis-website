@@ -125,22 +125,22 @@ export default function Footer({natis_logo, natis_logo_dark, cea_logo_dark, abou
           <div className={`flex h-full items-center gap-2`}>
 
             <div className={`text-light flex py-5 gap-4 me-5`}>
-              <Link href={content.instagram || '/'}>
+              <Link href={content.instagram || '/'} aria-label={`natis-instagram`}>
                 <a>
                   <FaInstagram size={20} />
                 </a>
               </Link>
-              <Link href={content.twitter || '/'}>
+              <Link href={content.twitter || '/'} aria-label={`natis-twitter`}>
                 <a>
                   <FaTwitter size={20} />
                 </a>
               </Link>
-              <Link href={content.facebook || '/'}>
+              <Link href={content.facebook || '/'} aria-label={`natis-facebook`}>
                 <a>
                   <FaFacebookF size={20} />
                 </a>
               </Link>
-              <Link href={content.linkedin || '/'}>
+              <Link href={content.linkedin || '/'} aria-label={`natis-linkedin`}>
                 <a>
                   <FaLinkedin size={20} />
                 </a>
