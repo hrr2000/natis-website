@@ -30,7 +30,7 @@ export async function getStaticProps({ locale, params }: GetStaticPropsContext) 
         hero_image: content_page.hero_image || ""
       },
       page: {
-        content: content_page.content
+        content: content_page.content || ""
       },
     },
     revalidate: REVALIDATE_BUILD_TIME,

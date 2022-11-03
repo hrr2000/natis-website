@@ -7,6 +7,9 @@ import {MdPhoneInTalk} from 'react-icons/md';
 import {useEffect, useState} from "react";
 import Modal from "../common/Modal";
 import {useRouter} from "next/router";
+import ApplyButton from "./MainLayout/components/ApplyButton";
+import PhoneList from "./MainLayout/components/PhoneList";
+import EmailList from "./MainLayout/components/EmailList";
 
 
 export interface ITopebar {
@@ -39,28 +42,17 @@ export default function Topbar({links, apply_button_text, searchState, emailList
       <div className={`container mx-auto flex justify-between items-start`}>
         <nav className="flex overflow-visible relative z-50 gap-6 text-primary hidden xl:flex">
           {links?.map((link) => {
-            return <span key={GRK('nav_link')} className={`block`}><Link absolute className={`text-primary uppercase opacity-50 py-2 hover:text-secondary duration-300 font-medium text-sm`} key={GRK('nav_link')} link={link}/></span>
+            return (
+              <span key={GRK('nav_link')} className={`block`}>
+                <Link absolute className={`text-primary uppercase opacity-50 py-2 hover:text-secondary duration-300 font-medium text-sm`} key={GRK('nav_link')} link={link}/>
+              </span>
+            )
           })}
         </nav>
         <div className={`flex gap-5 items-start relative z-[99] w-full justify-between md:justify-end`}>
-          <span className={`gap-2 items-center mt-2 md:flex hidden`}>
-            <span className={`text-secondary`} >
-              <BsEnvelopeFill size={18} />
-            </span>
-            <span className={``}>
-              {emailList?.[0].text}
-            </span>
-          </span>
-          <Link className={`mt-2`} link={{text: phoneList?.[0].text || '', url: '#', items: phoneList}} clickable icon={() => (
-            <span className={`text-secondary me-2`} >
-              <MdPhoneInTalk size={20} />
-            </span>
-          )}/>
-          <div className={`w-max`}>
-            <Link
-              link={{url: '/apply', text: apply_button_text}}
-              className="bg-secondary uppercase w-full md:w-max px-4 py-[.5rem] text-sm rounded-md text-white font-semibold duration-300 hover:opacity-70" />
-          </div>
+          <EmailList list={emailList || []} />
+          <PhoneList list={phoneList || []} />
+          <ApplyButton text={apply_button_text} />
         </div>
       </div>
       <div className={`absolute duration-200 ${!searchState.state ? '-top-[200px]' : 'top-0'} bg-[#D6D8DF] w-full h-full z-[100] flex justify-center items-center`}>
@@ -77,9 +69,9 @@ export default function Topbar({links, apply_button_text, searchState, emailList
           <button
             onClick={search}
             className="bg-secondary uppercase w-full w-max px-4 py-[.5rem] text-xs rounded-md text-white font-semibold duration-300 hover:opacity-70 flex items-center gap-2">
-          <span>
-            <AiOutlineSearch size={18} />
-          </span>
+            <span>
+              <AiOutlineSearch size={15} />
+            </span>
             <span>
               {isLoading ? (
                 router.locale === 'ar-SA' ? 'جارٍالبحث...' : 'Loading...'

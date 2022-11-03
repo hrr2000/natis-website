@@ -25,8 +25,14 @@ export default function Navbar({natis_logo, cea_logo, links, toggleMobileNav, is
     <div className={`bg-primary py-4 max-h-[65px] shadow-lg shadow-[rgba(0,0,0,0.2)]`}>
       <div className={`container mx-auto flex gap-8 justify-between items-center xl:items-start`}>
         <div className={`flex h-full items-center gap-2 w-96 cursor-pointer`}>
-          <Image className={`relative w-[163px] h-[38px]`} src={asset(natis_logo)} onClick={() => router.replace('/')} />
-          <Image className={`relative w-[75.49px] h-[26.26px]`} src={asset(cea_logo)} onClick={() => router.replace(CEA_URL)} />
+          <Image
+            className={`relative w-[120px] h-[27.98px] sm:w-[163px] sm:h-[38px]`}
+            src={asset(natis_logo)}
+            onClick={() => router.replace('/')} />
+          <Image
+            className={`relative w-[60px] h-[20.87px] sm:w-[75.49px] sm:h-[26.26px]`}
+            src={asset(cea_logo)}
+            onClick={() => router.replace(CEA_URL)} />
         </div>
         <div className={`flex items-center gap-4`}>
           <button className={`text-white flex  xl:hidden`} onClick={() => searchState?.setState(true)}>

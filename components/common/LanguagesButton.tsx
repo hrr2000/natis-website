@@ -55,7 +55,7 @@ export default function LanguageButton({className, disabled, clickable, absolute
     >
         <span className={`flex items-center gap-2 w-max cursor-pointer  ${className || ""}`}>
           <span>
-            <AiOutlineGlobal size={25} />
+            <AiOutlineGlobal size={20} />
           </span>
           <span>
             {languages?.[language] || ""}
