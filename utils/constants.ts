@@ -1,5 +1,5 @@
 // export const DIRECTUS_HOSTNAME = `http://localhost:8055`;
-export const DIRECTUS_HOSTNAME = `http://50.19.4.90:8055`;
+export const DIRECTUS_HOSTNAME = `http://23.23.48.83:8055`;
 export const CEA_URL = `https://www.cea-accredit.org/`;
 export const ASSET_BASE_URL = DIRECTUS_HOSTNAME + "/assets/";
 export const DEFAULT_LOCALE = 'en-US';
