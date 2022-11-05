@@ -17,13 +17,30 @@ export default function SubmissionForm({
     <Formik
       initialValues={submissionForm.formInitData}
       onSubmit={async (values, { resetForm }) => {
-        resetForm();
+        console.log(values);
         setModalState(1);
-        await awaitTimeout(2500);
-        setModalState(2);
-        await awaitTimeout(2000);
-        setModalState(0);
-        router.push("/");
+        fetch("/api/apply", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          // @ts-ignore
+          body: JSON.stringify(values)
+        }).then(async (res) => {
+          resetForm();
+          const obj: any = await res.json();
+          if(!obj?.message) {
+            setModalState(0);
+            alert('Failed to submit application');
+          }
+          setModalState(2);
+          await awaitTimeout(2000);
+          setModalState(0);
+        }).catch(() => {
+          setModalState(0);
+          alert('Failed to submit application');
+        })
+        // router.push("/");
       }}
       validationSchema={submissionForm.submissionSchema}
     >
@@ -85,15 +102,15 @@ export default function SubmissionForm({
           </div>
           <label className="flex gap-2 items-center font-bold">
             <Field type="checkbox" className="rounded-md" name="isAgreeTerms" />
-            I Accept The
-            <span className="text-secondary">Terms And Conditions</span>
+            {router.locale === 'ar-SA'? 'أنا أوافق' : 'I Accept The'}
+            <span className="text-secondary">{router.locale === 'ar-SA'? 'السياسات والخصوصيات' : 'Terms And Conditions'}</span>
           </label>
           <ErrorMessage name="isAgreeTerms" />
           <button
             className="bg-secondary w-max px-[2.5rem] py-[.5rem] rounded-md text-white font-semibold"
             type="submit"
           >
-            Register Now
+            {router.locale === 'ar-SA'? 'سجل الآن' : 'Register Now'}
           </button>
         </Form>
       )}

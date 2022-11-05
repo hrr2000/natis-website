@@ -15,12 +15,6 @@ export default async function handler(
 
   const body = req.body || {};
 
-  try {
-    delete body.isAgreeTerms
-  } catch (e) {
-    console.log(e)
-  }
-
   // create reusable transporter object using the default SMTP transport
   const transporter = nodemailer.createTransport({
     host: "smtp.porkbun.com",
@@ -34,7 +28,7 @@ export default async function handler(
 
   let rows = '';
   for(let key in body) {
-    rows += `<tr><td style="text-transform: capitalize">${beatifyCamelCase(key)}</td><td>${body[key]}</td></tr>`;
+    rows += `<tr><td  style="text-transform: capitalize">${beatifyCamelCase(key)}</td><td>${body[key]}</td></tr>`;
   }
 
   const template = `
@@ -78,10 +72,9 @@ export default async function handler(
       from: SENDER_EMAIL, // sender address
       to: body.email, // list of receivers
       subject: "Your Application at NATI Institute", // Subject line
-      html: template
+      html: 'We Have Received Your Message and Will Get Back to You Shortly.'
     });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ error: 'Failed to Submit the Application' });
   }
 

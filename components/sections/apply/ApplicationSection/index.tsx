@@ -5,26 +5,8 @@ import { LabelProvider } from "../../../../contexts/LabelProvider";
 import { labelsType } from "../../../../Types/common";
 import { useState } from "react";
 import Modal from "../../../common/Modal";
-import sending from "../../../../assets/sending.gif";
-import sent from "../../../../assets/sent.gif";
 import Image from "../../../common/Image";
-
-const getSubmissionResources = (modalState: number) => {
-  let src, heading, textContent;
-  if (modalState === 1) {
-    src = sending;
-    heading = "Sending the request";
-    textContent =
-      "Currently, the application is being submitted to the NATI ESL Institute ...";
-  } else if (modalState === 2) {
-    src = sent;
-    heading = "Completed request submission";
-    textContent =
-      "Your request has been sent to NATI ESL, check your email and wait for a response...";
-  }
-
-  return { src, heading, textContent };
-};
+import {getSubmissionResources} from "../../../../utils/functions";
 
 export default function ApplicationSection({
   title,
@@ -45,7 +27,7 @@ export default function ApplicationSection({
       <Modal modalState={modalState}>
         {(modalState) => {
           const { src, heading, textContent } =
-            getSubmissionResources(modalState);
+          getSubmissionResources(modalState);
           return (
             <div
               className={`flex flex-col justify-center items-center text-center min-h-[400px] ${

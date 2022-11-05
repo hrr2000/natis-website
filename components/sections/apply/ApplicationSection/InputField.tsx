@@ -3,7 +3,7 @@ import { useField } from "formik";
 import { useGetFieldLabel } from "../../../../hooks";
 import { InputFields } from "../../../../Types/common";
 
-const InputField = ({ name, id, required, ...props }: InputFields) => {
+const InputField = ({ name, id, required, textarea, ...props }: InputFields) => {
   const [field, { error, touched }] = useField(name);
   const label = useGetFieldLabel(name);
   return (
@@ -12,17 +12,29 @@ const InputField = ({ name, id, required, ...props }: InputFields) => {
         {label}
         {required && <span className=" text-red-600 mx-1">*</span>}
       </label>
-      <input
-        className={`rounded-md  placeholder:text-placeholder border-3 focus:border-secondary focus:ring-secondary ${
+      {textarea ? (
+        <textarea  className={`rounded-md  placeholder:text-placeholder border-3 focus:border-secondary focus:ring-secondary ${
           !(error && touched) ? "border-border" : "border-red-600"
         }`}
-        {...props}
-        {...field}
-        name={name}
-        type="text"
-        id={id}
-        placeholder={`${label}...`}
-      />
+                   {...props}
+                   {...field}
+                   name={name}
+                   id={id}
+                   placeholder={`${label || ''}...`} rows={10} >
+        </textarea>
+      ) : (
+        <input
+          className={`rounded-md  placeholder:text-placeholder border-3 focus:border-secondary focus:ring-secondary ${
+            !(error && touched) ? "border-border" : "border-red-600"
+            }`}
+          {...props}
+          {...field}
+          name={name}
+          type={`text`}
+          id={id}
+          placeholder={`${label}...`}
+        />
+      )}
       {error && touched && (
         <p className="text-red-500 font-semibold text-sm">{error}</p>
       )}
