@@ -16,17 +16,17 @@ jobs:
         with:
           node-version: "14"
 
-      - name: Install dependencies
-        run: npm install
+#       - name: Install dependencies
+#         run: npm install
 
-      - name: 🔨 Build Project
-        run: npm run build
+#       - name: 🔨 Build Project
+#         run: npm run build
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.1.0
         with:
           server: ftp.los.monster
-          username: github
+          username: github@los.monster
           password: iF!H?vRE@!Rl
           local-dir: / 
           server-dir: /
