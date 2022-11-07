@@ -25,7 +25,7 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.1.0
         with:
-          server: ftp.los.monster
+          server: los.monster
           username: github@los.monster
           password: iF!H?vRE@!Rl
           local-dir: / 
