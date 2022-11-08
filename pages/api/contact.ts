@@ -75,6 +75,7 @@ export default async function handler(
       html: 'We Have Received Your Message and Will Get Back to You Shortly.'
     });
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ error: 'Failed to Submit the Application' });
   }
 
