@@ -74,9 +74,9 @@ export default async function handler(
       subject: "Your Application at NATI Institute", // Subject line
       html: 'We Have Received Your Message and Will Get Back to You Shortly.'
     });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
-    return res.status(500).json({ error: 'Failed to Submit the Application' });
+    return res.status(500).json({ error: error.message });
   }
 
 
