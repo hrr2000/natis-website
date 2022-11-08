@@ -22,11 +22,11 @@ const InstituteCampus: NextPage = ({ content, labels }: any) => {
       <SectionWrapper>
         <div className={`flex justify-between items-center flex-wrap gap-5`}>
           <div className={`flex flex-col gap-6`}>
-            <h2>Information</h2>
-            <ContactItem title={`Address`}>
+            <h2>{content.information_title}</h2>
+            <ContactItem title={content.address_label}>
               <p>20164 East Holly Avenue#112 Sterling, VA 207</p>
             </ContactItem>
-            <ContactItem title={`Contact Phone Numbers`}>
+            <ContactItem title={content.contact_label}>
               {content.footer?.phone_list?.map((link: ILink, index: number) => (
                 <p key={GRK('footer_link')} className={`my-2`}>
                     {link.text}
@@ -34,7 +34,7 @@ const InstituteCampus: NextPage = ({ content, labels }: any) => {
               ))}
               <p>{content.footer?.fax_title}: {content.footer?.phone_list?.[0]?.text}</p>
             </ContactItem>
-            <ContactItem title={`Support`}>
+            <ContactItem title={content.support_label}>
               <p>{content.footer?.email_list?.[0]?.text}</p>
               <div className={`text-secondary flex py-5 gap-4 me-5`}>
                 <Link href={content.footer?.instagram || '/'} aria-label={`natis-instagram`}>
@@ -60,7 +60,7 @@ const InstituteCampus: NextPage = ({ content, labels }: any) => {
               </div>
             </ContactItem>
           </div>
-          <div className={`w-[65%]`}>
+          <div className={`w-full lg:w-[65%]`}>
             <LabelProvider labels={labels}>
               <SubmissionForm setModalState={setModalState} />
             </LabelProvider>
@@ -108,7 +108,7 @@ const InstituteCampus: NextPage = ({ content, labels }: any) => {
 
 function ContactItem({title, children}: any) {
   return (
-    <div className={`flex flex-col border-s-8 p-5 border-secondary shadow-md lg:w-80`}>
+    <div className={`flex flex-col border-s-8 p-5 border-secondary shadow-md w-full lg:w-80`}>
       <h4 className={`text-2xl`}>{title}</h4>
       {children}
     </div>
