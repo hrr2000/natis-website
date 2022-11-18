@@ -57,7 +57,11 @@ export default function MainLayout({content, children}: IMainLayout) {
     <main className={`w-full overflow-hidden ${isNavbarFixed ? 'pt-[130px]' : ''}`}>
       <Head>
         <title>{content.title}</title>
+        <meta property="og:title" content={content.title} />
+        <meta property="og:description" content={content.hero_description} />
+        <meta property="og:image" content="https://nati-esl-usa.org/favicon.ico" />
         <meta name="description" content={content.hero_description} />
+        <meta name="keywords" content={`Nati ESL USA, ${content.title}, University, USA, Study, English, ESL`} />
       </Head>
       <div className={`top-0 z-50 w-full transition-all duration-500 ${isNavbarFixed ? `fixed top-0` : `top-[-200px]`}`}>
         <Topbar
