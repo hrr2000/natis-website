@@ -24,7 +24,7 @@ export default function HeroSection(content: IHeroSection) {
   const { backgroundImage, heading, description, breadcrumbs, links } = content;
 
   return (
-    <header className={`relative w-full min-h-[400px]`}>
+    <header className={`relative w-full lg:min-h-[400px]`}>
       <Image objectFit={`cover`} src={backgroundImage} />
       <Overlay />
       <ContentWrapper>

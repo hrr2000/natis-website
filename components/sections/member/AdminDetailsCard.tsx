@@ -11,7 +11,7 @@ const AdminDetailsCard = ({
   adminSocial
 }: AdminDetailsCard) => {
   return (
-    <section className="grid-cols-custom grid-rows-custom grid flex-1 col-span-5 mb-10 lg:mb-0">
+    <section className="grid-cols-custom grid-rows-custom md:grid flex-1 col-span-5 md:mb-10 lg:mb-0">
       <div className="col-1/3s row-1/3s bg-secondary hidden sm:block"></div>
       <div className="sm:col-2/-2 row-2/-2 col-span-5 bg-white z-20 flex flex-col ">
         <Image

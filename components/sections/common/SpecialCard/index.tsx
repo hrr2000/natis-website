@@ -23,7 +23,7 @@ export default function SpecialCard({image, smallTitle, bigTitle, description, r
       <div className="flex items-center justify-center mx-auto my-5 lg:my-32 container w-[80%] lg:w-full">
         <div className="flex flex-col relative lg:flex-row w-full justify-center lg:justify-start py-6 sm:py-12" dir={containerDirection}>
           <div className="h-[80%] top-0 w-full absolute lg:relative mx-[-16.666667%] lg:mx-0 lg:h-[600px] lg:basis-2/12 bg-secondary"></div>
-          <div className="lg:-mt-24 mx-[-8.333333%] lg:mx-0 h-[200px] md:h-[400px] lg:h-[600px] lg:basis-4/12 relative z-1" style={{
+          <div className="lg:-mt-24 mx-[-8.333333%] lg:mx-0 h-[320px] md:h-[400px] lg:h-[600px] lg:basis-4/12 relative z-1" style={{
             marginInlineStart: '-8.333333%'
           }}>
             <Image src={image} objectFit={'cover'} />

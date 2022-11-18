@@ -24,9 +24,9 @@ export default function NewsSection({title, headerLink, news}: INewsSection) {
             key={GRK(`member_card`)}
             className={`flex justify-center lg:col-span-4 md:col-span-6 col-span-12`}
           >
-            <div className={`min-h-[400px] lg:max-w-[360px] w-full flex flex-col shadow-lg rounded-md overflow-hidden`}>
+            <div className={`min-h-[360px] lg:max-w-[360px] w-full flex flex-col shadow-lg rounded-md overflow-hidden`}>
               <Image src={asset(item?.image)} objectFit={`cover`} className={`relative min-h-[200px]`} />
-              <div className={`p-10`}>
+              <div className={`p-5 lg:p-10`}>
                 <h3 className={`text-lg`}>
                   {item.title}
                 </h3>

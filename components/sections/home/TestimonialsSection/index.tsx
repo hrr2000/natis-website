@@ -10,7 +10,7 @@ export default function TestimonialsSection({ title, testimonials }: any) {
 
   return (
     <>
-      <section className={`container mx-auto py-8`}>
+      <section className={`container mx-auto py-0 lg:py-2`}>
         <header>
           <SectionHeading text={title} />
         </header>

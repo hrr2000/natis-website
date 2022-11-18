@@ -74,7 +74,7 @@ export function SubLinksList({link, isCollapsed, absolute}: any) {
           }
         >
           {link.items?.map((subLink: ILink) => {
-            return <Link key={GRK('nav_sublink')} className={`hover:text-secondary text-[.75rem] py-1`} link={subLink} clickable={!!subLink?.items?.length}/>
+            return <Link key={GRK('nav_sublink')} className={`hover:text-secondary text-lg lg:text-[.75rem] py-1`} link={subLink} clickable={!!subLink?.items?.length}/>
           })}
         </div>
       )}

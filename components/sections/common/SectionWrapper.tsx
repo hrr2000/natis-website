@@ -1,10 +1,14 @@
+import GeneralAnimator from "../../common/GeneralAnimator";
+
 export default function SectionWrapper({ children, className, dynamic, ...props }: any) {
   return (
     <section
-      className={`${dynamic ? "w-dynamic" : "container"} mx-auto py-5 ${className} `}
+      className={`${dynamic ? "w-dynamic" : "container"} mx-auto py-2 lg:py-5 ${className} `}
       {...props}
     >
-      {children}
+      <GeneralAnimator>
+        {children}
+      </GeneralAnimator>
     </section>
   );
 }

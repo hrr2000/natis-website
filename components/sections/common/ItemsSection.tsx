@@ -33,7 +33,7 @@ export default function ItemsSection({
           </Link>
         )}
       </header>
-      <main className={`mb-10 mt-5 w-full grid grid-cols-12 gap-5`}>
+      <main className={`mb-5 mt-5 w-full grid grid-cols-12 gap-5`}>
         {items?.map((item) => {
           return template({ key: GRK("item"), item });
         })}

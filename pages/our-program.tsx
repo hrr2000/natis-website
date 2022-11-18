@@ -16,14 +16,13 @@ import {AiOutlinePlus, AiOutlineMinus} from "react-icons/ai";
 const InstituteCampus: NextPage = ({ content }: any) => {
   return (
     <MainLayout content={content}>
-      <SectionWrapper className={`my-10`}>
+      <SectionWrapper className={`my-3`}>
         <h2>{content.program_title}</h2>
         <p>{content.program_subtitle}</p>
         <br />
         <Video videoCover={asset(content.program_video_cover)} videoUrl={content.program_video_url} />
         <br />
         <h2>{content.program_objectives_heading}</h2>
-        <br />
         <p>{content.program_description}</p>
         <br />
         <HTMLRenderer className={`test-center blog-content`} content={content.program_table} />

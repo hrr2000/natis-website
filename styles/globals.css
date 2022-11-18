@@ -59,7 +59,7 @@ h1 {
   @apply lg:text-6xl sm:text-4xl text-2xl;
 }
 h2 {
-  @apply lg:text-4xl sm:text-3xl text-xl;
+  @apply lg:text-4xl sm:text-3xl text-2xl;
 }
 h3 {
   @apply text-4xl sm:text-3xl;
