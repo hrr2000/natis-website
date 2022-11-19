@@ -139,6 +139,10 @@ div.swiper-slide {
   width: 100%;
 }
 
+.gallery-wrapper.gallery-wrapper {
+   overflow: hidden !important;
+}
+
 /*7asby alah ya mustafa xDD*/
 
 @media only screen and (max-width: 600px) {

@@ -17,7 +17,7 @@ export default function ApplicationSection({
 }) {
   const [modalState, setModalState] = useState(0);
   return (
-    <SectionWrapper className={`my-20`}>
+    <SectionWrapper noAnimation className={`my-20`}>
       <header className={`mb-10`}>
         <SectionHeading text={title} />
       </header>

@@ -32,7 +32,7 @@ export default function ImageSection({
 
   return (
     <>
-      <SectionWrapper style={{ marginTop: 0 }}>
+      <SectionWrapper noAnimation style={{ marginTop: 0 }}>
         <header>{title && <SectionHeading text={title || ""} />}</header>
         {/* create image component */}
         <ul className=" flex flex-col md:grid md:grid-cols-3 lg:grid-cols-4 gap-5 list-none p-0 ">
@@ -59,10 +59,12 @@ export default function ImageSection({
         <Modal modalState={modal.isVisible} modalRef={ref}>
           {() => (
             <Swiper
-              modules={[Navigation, Pagination]}
+              modules={[Navigation]}
+              centeredSlides={false}
+              loop={true}
               slidesPerView={1}
               navigation
-              className="flex rounded-md h-[70vh] w-full"
+              className="flex rounded-md h-[70vh] gallery-wrapper"
               initialSlide={modal.pressedIndex}
             >
               {urls?.map((url) => (
