@@ -34,7 +34,7 @@ const SelectField = ({
           !(error && touched) ? "border-[#EBEDED]" : "border-red-600"
         }`}
       >
-        <option value="">Select X</option>
+        <option value="">-- select --</option>
         {options?.map((option) => (
           <option key={GRK(option)} className="capitalize" value={option}>
             {option}

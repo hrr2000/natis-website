@@ -8,14 +8,15 @@ import MainLayout from "../components/layouts/MainLayout";
 const Apply: NextPage = ({ content, labels }: any) => {
   return (
     <MainLayout content={content}>
-      <ApplicationSection title={content.form_title} labels={labels} />
+      <ApplicationSection classes={content?.programPage?.program_classes || []} title={content.form_title} labels={labels} />
     </MainLayout>
   );
 };
 
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
   const page = new Page("application_page", locale || DEFAULT_LOCALE);
-  const [content] = await Promise.all([page.data()]);
+  const programPage = new Page("our_program_page", locale || DEFAULT_LOCALE);
+  const [content, programPageData] = await Promise.all([page.data(), programPage.data()]);
 
   const labels = {
     fullName: content.full_name_label || '',
@@ -35,7 +36,10 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
   };
   return {
     props: {
-      content,
+      content: {
+        ...content,
+        programPage: programPageData
+      },
       labels,
     },
     revalidate: REVALIDATE_BUILD_TIME,

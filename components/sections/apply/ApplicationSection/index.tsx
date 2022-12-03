@@ -11,9 +11,11 @@ import {getSubmissionResources} from "../../../../utils/functions";
 export default function ApplicationSection({
   title,
   labels,
+  classes
 }: {
   title: string;
   labels: labelsType;
+  classes: any[];
 }) {
   const [modalState, setModalState] = useState(0);
   return (
@@ -22,7 +24,7 @@ export default function ApplicationSection({
         <SectionHeading text={title} />
       </header>
       <LabelProvider labels={labels}>
-        <SubmissionForm setModalState={setModalState} />
+        <SubmissionForm classes={classes} setModalState={setModalState} />
       </LabelProvider>
       <Modal modalState={modalState}>
         {(modalState) => {

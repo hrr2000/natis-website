@@ -8,8 +8,10 @@ import { useRouter } from "next/router";
 
 export default function SubmissionForm({
   setModalState,
+  classes
 }: {
   setModalState: (state: number) => void;
+  classes: any[]
 }) {
   const router = useRouter();
 
@@ -85,7 +87,7 @@ export default function SubmissionForm({
               required
               name="courseNumber"
               id="course-number"
-              options={["1", "2", "3"]}
+              options={classes?.map((item) => item.title)}
             />
             <InputField
               id="total-clock-hours"
@@ -97,7 +99,7 @@ export default function SubmissionForm({
               required
               name="enrollmentPeriodTerm"
               id="enrollment-period-term"
-              options={["1", "2", "3"]}
+              options={["Fall", "Winter", "Spring", "Summer"]}
             />
           </div>
           <label className="flex gap-2 items-center font-bold">
