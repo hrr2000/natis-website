@@ -23,8 +23,8 @@ const submissionSchema = Yup.object({
     .required(errorMessages.req),
   email: Yup.string().email().required(errorMessages.req),
   programCourse: Yup.string().required(errorMessages.req),
-  courseNumber: Yup.number()
-    .typeError(errorMessages.num)
+  courseNumber: Yup.string()
+    .typeError(errorMessages.string)
     .required(errorMessages.req),
   totalClockHours: Yup.number()
     .typeError(errorMessages.num)
