@@ -4,14 +4,28 @@ import MainLayout from "../../components/layouts/MainLayout";
 import {DEFAULT_LOCALE, REVALIDATE_BUILD_TIME} from "../../utils/constants";
 import SectionWrapper from "../../components/sections/common/SectionWrapper";
 import HTMLRenderer from "../../components/common/HTMLRenderer";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const AdminsSupervisorsItem: NextPage = ({content, page}: any) => {
+    const router = useRouter();
+    const [render, setRender] = useState(router.query.slug);
+
+    useEffect(() => {
+        setRender(router.query.slug)
+        console.log(render);
+    }, [router.query.slug])
+    
   return (
-    <MainLayout content={content}>
-      <SectionWrapper className={`page-content blog-content`}>
-        <HTMLRenderer content={page.content} />
-      </SectionWrapper>
-    </MainLayout>
+        router.query.slug !== render ? 
+            <></>
+         : (
+            <MainLayout content={content}>
+                <SectionWrapper className={`page-content blog-content`}>
+                    <HTMLRenderer content={page.content} />
+                </SectionWrapper>
+            </MainLayout>
+         )
   );
 };
 
