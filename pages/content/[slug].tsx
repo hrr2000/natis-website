@@ -13,7 +13,6 @@ const AdminsSupervisorsItem: NextPage = ({content, page}: any) => {
 
     useEffect(() => {
         setRender(router.query.slug)
-        console.log(render);
     }, [router.query.slug])
     
   return (

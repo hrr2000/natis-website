@@ -20,17 +20,17 @@ export default function AboutSection({title, videoCover, videoUrl, goalsText, ab
         <SectionHeading text={title} />
       </header>
       <article className={`grid lg:grid-cols-12 leading-8 mt-5`}>
-        <main className={`lg:col-span-8 lg:pe-10 lg:me-10 lg:border-e-2`}>
+        <main className={`lg:col-span-12 lg:pe-10 lg:me-10 lg:border-e-2-`}>
           <GeneralAnimator>
             <Video videoCover={videoCover} videoUrl={videoUrl} />
             <HTMLRenderer className={`mt-5`} content={goalsText} block />
           </GeneralAnimator>
         </main>
-        <aside className={`lg:col-span-4 text-sm leading-6 mt-12 lg:mt-5`}>
-          <GeneralAnimator>
-            <HTMLRenderer content={aboutText} block />
-          </GeneralAnimator>
-        </aside>
+        {/*<aside className={`lg:col-span-4 text-sm leading-6 mt-12 lg:mt-5`}>*/}
+        {/*  <GeneralAnimator>*/}
+        {/*    <HTMLRenderer content={aboutText} block />*/}
+        {/*  </GeneralAnimator>*/}
+        {/*</aside>*/}
       </article>
     </SectionWrapper>
   )
