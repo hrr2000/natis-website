@@ -8,8 +8,6 @@ import SectionHeading from "../../common/SectionHeading";
 export default function TestimonialsSection({ title, testimonials }: any) {
   const [review, setReview] = useState<any>({});
 
-  console.log(review);
-
   return (
     <>
       <section className={`container mx-auto py-0 lg:py-2`}>

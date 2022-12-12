@@ -119,7 +119,7 @@ export default function Footer({natis_logo, natis_logo_dark, cea_logo_dark, abou
         <div className="container mx-auto flex pt-4 lg:pt-0 lg:gap-5 justify-center flex-col lg:flex-row lg:justify-between items-center text-white">
           <div className={`h-full items-center gap-2 hidden lg:flex`}>
             <Image className={`relative w-[163px] h-[38px] cursor-pointer`} src={asset(natis_logo_dark)} onClick={() => router.replace('/')} />
-            <Image className={`relative w-[75.49px] h-[26.26px] cursor-pointer`} src={asset(cea_logo_dark)} onClick={() => router.replace(CEA_URL)} />
+            {/*<Image className={`relative w-[75.49px] h-[26.26px] cursor-pointer`} src={asset(cea_logo_dark)} onClick={() => router.replace(CEA_URL)} />*/}
           </div>
           <div>{content.copy_rights}</div>
           <div className={`flex h-full items-center gap-2`}>
