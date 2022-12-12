@@ -38,7 +38,7 @@ export default function Video({videoCover, videoUrl, noOverlay}: IVideo) {
         <iframe
           className={`w-full`}
           height="315"
-          src="https://www.youtube.com/embed/bW_BILl7n0Y?autoplay=true"
+          src={`${videoUrl}?autoplay=true`}
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
