@@ -24,14 +24,14 @@ export default function NewsSection({title, headerLink, news}: INewsSection) {
             key={GRK(`member_card`)}
             className={`flex justify-center lg:col-span-4 md:col-span-6 col-span-12`}
           >
-            <div className={`min-h-[360px] lg:max-w-[360px] w-full flex flex-col shadow-lg rounded-md overflow-hidden`}>
+            <div className={`min-h-[360px] w-full flex flex-col justify-between shadow-lg rounded-md overflow-hidden`}>
               <Image src={asset(item?.image)} objectFit={`cover`} className={`relative min-h-[200px]`} />
-              <div className={`p-5 lg:p-10`}>
+              <div className={`p-5 lg:p-8`}>
                 <h3 className={`text-lg`}>
                   {item.title}
                 </h3>
                 <p className={`text-sm`}>
-                  {unComplete(item.short_description, 60)}
+                  {unComplete(item.short_description, item.title.length > 46 ? 90 : 150)}
                 </p>
                 <span className={`text-secondary text-[1rem] font-medium my-2 block`}>
                   <RelativeDate date_string={item.date_created} icon/>
