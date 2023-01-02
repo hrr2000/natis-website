@@ -33,7 +33,7 @@ export default function AvatarSwiper({ data, setReview }: any) {
         ref={swiperRef}
         tag="section"
         centeredSlides={true}
-        slidesPerView={data?.length || 0}
+        slidesPerView={5}
         onSlideChange={(swiper) => {
           setReview(data[swiper.realIndex]);
         }}
