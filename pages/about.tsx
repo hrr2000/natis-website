@@ -5,7 +5,6 @@ import SpecialCard from "../components/sections/common/SpecialCard";
 import {DEFAULT_LOCALE, REVALIDATE_BUILD_TIME} from "../utils/constants";
 import GoalsSection from "../components/sections/about/GoalsSection";
 import MainLayout from "../components/layouts/MainLayout";
-import AdminsSection from "../components/sections/about/AdminsSection";
 
 const About: NextPage = ({ content, goals_and_objectives, committee_members }: any) => {
   return (

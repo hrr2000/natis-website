@@ -24,7 +24,6 @@ const InstituteCampus: NextPage = ({ content }: any) => {
         <br />
         <h2>{content.program_objectives_heading}</h2>
         <p>{content.program_description}</p>
-        <br />
         <HTMLRenderer className={`test-center blog-content`} content={content.program_table} />
       </SectionWrapper>
       <div className={`w-full text-white text-center flex flex-col items-center gap-10 my-5 relative`}>

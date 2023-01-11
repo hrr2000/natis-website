@@ -8,16 +8,16 @@ import Image from "./Image";
 
 const languages: any = {
   'en-US': 'English',
-  'ar-SA': 'العربية',
-  'fr-FR': 'Français',
-  'es-ES': 'Español'
+  // 'ar-SA': 'العربية',
+  // 'fr-FR': 'Français',
+  // 'es-ES': 'Español'
 };
 
 const icons: any = {
   'en-US': '/flags/en-flag.svg',
-  'ar-SA': '/flags/ar-flag.svg',
-  'fr-FR': '/flags/fr-flag.svg',
-  'es-ES': '/flags/sp-flag.svg'
+  // 'ar-SA': '/flags/ar-flag.svg',
+  // 'fr-FR': '/flags/fr-flag.svg',
+  // 'es-ES': '/flags/sp-flag.svg'
 };
 
 const links: any = [];
