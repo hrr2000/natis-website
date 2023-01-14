@@ -16,7 +16,7 @@ const Gallery: NextPage = ({ content, galleryDetails }: any) => {
     </MainLayout>
   );
 }
-
+  
 export default Gallery;
 
 export async function getStaticProps({ locale, params }: GetStaticPropsContext) {

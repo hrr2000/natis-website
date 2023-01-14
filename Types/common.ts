@@ -12,6 +12,7 @@ export interface InputFields {
   name: string;
   id: string;
   required?: boolean | undefined;
+  rows?: number;
 }
 
 export type labelsType = { [label: string]: string };

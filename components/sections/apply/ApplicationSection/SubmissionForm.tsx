@@ -1,7 +1,7 @@
 import RadioGroup from "./RadioGroup";
-import InputField from "./InputField";
+import InputField from "../../../common/InputField";
 import { Field, Form, Formik, ErrorMessage } from "formik";
-import SelectField from "./SelectField";
+import SelectField from "../../../common/SelectField";
 import { submissionForm } from "../../../../utils/validation/schemas";
 import { awaitTimeout } from "../../../../utils/functions";
 import { useRouter } from "next/router";

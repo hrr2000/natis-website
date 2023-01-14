@@ -16,7 +16,7 @@ interface ISpecialCard {
   initiallyVisible?: boolean;
 }
 
-export default function SpecialCard({image, smallTitle, bigTitle, description, reverse, animation, initiallyVisible, unFirst }: ISpecialCard) {
+export default function   SpecialCard({image, smallTitle, bigTitle, description, reverse, animation, initiallyVisible, unFirst }: ISpecialCard) {
 
   const {locale} = useRouter();
   const textDirection = locale === 'ar-SA' ? 'rtl' : 'ltr';

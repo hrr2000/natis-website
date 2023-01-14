@@ -1,7 +1,7 @@
 import { useField } from "formik";
-import { GRK } from "../../../../utils/functions";
-import { useGetFieldLabel } from "../../../../hooks";
-import { InputFields } from "../../../../Types/common";
+import { GRK } from "../../utils/functions";
+import { useGetFieldLabel } from "../../hooks";
+import { InputFields } from "../../Types/common";
 
 interface SelectFieldTypes extends InputFields {
   options: string[];

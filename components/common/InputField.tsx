@@ -1,9 +1,9 @@
 import React from "react";
 import { useField } from "formik";
-import { useGetFieldLabel } from "../../../../hooks";
-import { InputFields } from "../../../../Types/common";
+import { useGetFieldLabel } from "../../hooks";
+import { InputFields } from "../../Types/common";
 
-const InputField = ({ name, id, required, textarea, ...props }: InputFields) => {
+const InputField = ({ name, id, required, textarea, rows, ...props }: InputFields) => {
   const [field, { error, touched }] = useField(name);
   const label = useGetFieldLabel(name);
   return (
@@ -20,7 +20,7 @@ const InputField = ({ name, id, required, textarea, ...props }: InputFields) => 
                    {...field}
                    name={name}
                    id={id}
-                   placeholder={`${label || ''}...`} rows={10} >
+                   placeholder={`${label || ''}...`} rows={rows || 10} >
         </textarea>
       ) : (
         <input

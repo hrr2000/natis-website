@@ -1,4 +1,4 @@
-import InputField from "../../apply/ApplicationSection/InputField";
+import InputField from "../../../common/InputField";
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import { contactForm } from "../../../../utils/validation/schemas";
 import { awaitTimeout } from "../../../../utils/functions";
