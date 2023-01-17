@@ -5,6 +5,7 @@ import SatisfactionForm from "../../components/sections/forms/SatisfactionForm";
 import {DEFAULT_LOCALE, REVALIDATE_BUILD_TIME} from "../../utils/constants";
 import MainLayout from "../../components/layouts/MainLayout";
 import SectionWrapper from "../../components/sections/common/SectionWrapper";
+import PasswordProtected from "../../components/sections/forms/PasswordProtected";
 
 const SatisfactionSurvey: NextPage = ({ content, labels }: any) => {
   return (
@@ -12,7 +13,9 @@ const SatisfactionSurvey: NextPage = ({ content, labels }: any) => {
       <SectionWrapper>
         <h2>{content.title}</h2>
       </SectionWrapper>
-      <SatisfactionForm classes={content?.programPage?.program_classes || []} title={content.form_title} labels={labels} />
+      <PasswordProtected>
+        <SatisfactionForm classes={content?.programPage?.program_classes || []} title={content.form_title} labels={labels} />
+      </PasswordProtected>
     </MainLayout>
   );
 };
