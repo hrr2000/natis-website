@@ -22,7 +22,8 @@ export default async function handler(
   }
 
   return res.status(400).json({
-    error: 'invalid password'
+    // error: 'invalid password'
+    error: formPassword
   });
 }
 
