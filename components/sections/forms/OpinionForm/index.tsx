@@ -16,7 +16,6 @@ export default function SatisfactionForm({title, labels, classes}: {
 }) {
   const [modalState, setModalState] = useState(0);
   return (
-    <PasswordProtected>
       <SectionWrapper noAnimation>
         <header className={`mb-10`}>
           <SectionHeading text={title} />
@@ -55,6 +54,5 @@ export default function SatisfactionForm({title, labels, classes}: {
           }}
         </Modal>
       </SectionWrapper>
-    </PasswordProtected>
   );
 }

@@ -15,12 +15,11 @@ export default function PasswordProtected({children}: {children: ReactNode}) {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            password: localStorage.getItem('form-password') || password
+            password: password
           })
         }).then(res => res.json());
         if(!result.error && result.password === password) {
           setIsVisible(true);
-          localStorage.setItem('form-password', password);
         }
       }
     })()

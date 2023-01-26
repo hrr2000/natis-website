@@ -4,11 +4,14 @@ import Page from "../../models/Page";
 import OpinionForm from "../../components/sections/forms/OpinionForm";
 import {DEFAULT_LOCALE, REVALIDATE_BUILD_TIME} from "../../utils/constants";
 import MainLayout from "../../components/layouts/MainLayout";
+import PasswordProtected from "../../components/sections/forms/PasswordProtected";
 
 const OpinionSurvey: NextPage = ({ content, labels }: any) => {
   return (
     <MainLayout content={content}>
-      <OpinionForm title={content.title} classes={content?.programPage?.program_classes || []} labels={labels} />
+      <PasswordProtected>
+        <OpinionForm title={content.title} classes={content?.programPage?.program_classes || []} labels={labels} />
+      </PasswordProtected>
     </MainLayout>
   );
 };
