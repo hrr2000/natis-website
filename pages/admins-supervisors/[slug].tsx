@@ -11,7 +11,7 @@ const AdminsSupervisorsItem: NextPage = ({
 }: any) => {
   return (
     <MainLayout content={content}>
-      <main className="min-h-screen">
+      <main>
         <MemberSection
           adminName={adminName}
           adminRole={adminRole}
