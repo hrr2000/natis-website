@@ -30,17 +30,23 @@ export default function StudentFormsPage({content}: any) {
               >
                 <div className={`min-h-[360px] w-full flex flex-col justify-between shadow-lg rounded-md overflow-hidden`}>
                   <Image src={asset(item?.image_url)} objectFit={`cover`} className={`relative min-h-[280px]`} />
-                  <div className={`p-5 lg:p-4`}>
-                    <h3 className={`text-lg`}>
+                  <div className={`p-5 lg:p-4 text-center`}>
+                    <h3 className={`text-lg p-0`}>
                       {item.title}
                     </h3>
+                    <button className={`mt-3 w-full bg-secondary text-white p-2 rounded-lg font-medium`}>
+                      Click to download
+                    </button>
                   </div>
                 </div>
               </a>
             </Link>
           )
         }} />
+        <hr />
+        <div>
 
+        </div>
       </SectionWrapper>
     </MainLayout>
   )
