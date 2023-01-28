@@ -53,6 +53,7 @@ export default function StudentFormsPage({content}: any) {
   )
 }
 
+
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
   const page = new Page("files_page", locale || DEFAULT_LOCALE);
   const [content, accordion_files] = await Promise.all([page.data(), page.getItems(`accordion_files`)]);
