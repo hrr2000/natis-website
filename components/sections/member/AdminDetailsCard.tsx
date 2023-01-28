@@ -17,7 +17,7 @@ const AdminDetailsCard = ({
         <Image
           src={adminSrcImage}
           alt=""
-          className="relative border-0 rounded-none h-[490px] w-[100%] md:w-[490px]"
+          className="relative border-0 rounded-none min-h-[490px] min-w-[100%] md:min-w-[490px]"
           objectFit="cover"
         />
         <div className="flex gap-4 lg:gap-2 p-6 flex-col flex-1 justify-center shadow-xl">
