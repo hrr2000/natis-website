@@ -40,6 +40,7 @@ export default function StudentFormsPage({content}: any) {
             </Link>
           )
         }} />
+
       </SectionWrapper>
     </MainLayout>
   )
