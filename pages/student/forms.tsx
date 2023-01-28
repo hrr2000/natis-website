@@ -34,7 +34,7 @@ export default function StudentFormsPage({content}: any) {
                     <h3 className={`text-lg p-0`}>
                       {item.title}
                     </h3>
-                    <button className={`mt-3 w-full bg-secondary text-white p-2 rounded-lg font-medium`}>
+                    <button className={`mt-3 w-full bg-secondary text-white p-2 rounded-lg font-medium duration-300 hover:opacity-80`}>
                       Click to download
                     </button>
                   </div>
