@@ -18,7 +18,7 @@ export default function MemberSection({
           adminSrcImage={adminSrcImage}
           adminSocial={adminSocial}
         />
-        <AdminDetailsText adminName={adminName} adminStory={adminStory} />
+        {/*<AdminDetailsText adminName={adminName} adminStory={adminStory} />*/}
       </div>
     </SectionWrapper>
   );
