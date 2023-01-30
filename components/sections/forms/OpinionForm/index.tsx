@@ -3,11 +3,10 @@ import SectionHeading from "../../common/SectionHeading";
 import SubmissionForm from "./SubmissionForm";
 import { LabelProvider } from "../../../../contexts/LabelProvider";
 import { labelsType } from "../../../../Types/common";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import Modal from "../../../common/Modal";
 import Image from "../../../common/Image";
 import {getSubmissionResources} from "../../../../utils/functions";
-import PasswordProtected from "../PasswordProtected";
 
 export default function SatisfactionForm({title, labels, classes}: {
   title: string;

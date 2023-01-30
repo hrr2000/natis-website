@@ -8,12 +8,13 @@ import MainLayout from "../../components/layouts/MainLayout";
 import {GetStaticPropsContext} from "next";
 import Page from "../../models/Page";
 import {DEFAULT_LOCALE, REVALIDATE_BUILD_TIME} from "../../utils/constants";
+import PDFUploadForm from "../../components/sections/forms/PDFUploadForm";
 
 
 export default function StudentFormsPage({content}: any) {
   return (
     <MainLayout content={content}>
-      <SectionWrapper>
+      <SectionWrapper noAnimation>
         <ItemsSection title={content.title} headerLink={{
           url: '#',
           text: ''
@@ -45,7 +46,10 @@ export default function StudentFormsPage({content}: any) {
         }} />
         <hr />
         <div>
-
+          <PDFUploadForm title={'Upload Your Signed Form'} labels={{
+            fullName: 'Full Name',
+            email: 'Email'
+          }} />
         </div>
       </SectionWrapper>
     </MainLayout>
